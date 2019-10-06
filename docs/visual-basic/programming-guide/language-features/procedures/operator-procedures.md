@@ -25,25 +25,27 @@ An operator procedure is a series of Visual Basic statements that define the beh
 ## Types of Operator Procedure  
  An operator procedure can be one of the following types:  
   
--   A definition of a unary operator where the argument is of the type of your class or structure.  
+- A definition of a unary operator where the argument is of the type of your class or structure.  
   
--   A definition of a binary operator where at least one of the arguments is of the type of your class or structure.  
+- A definition of a binary operator where at least one of the arguments is of the type of your class or structure.  
   
--   A definition of a conversion operator where the argument is of the type of your class or structure.  
+- A definition of a conversion operator where the argument is of the type of your class or structure.  
   
--   A definition of a conversion operator that returns the type of your class or structure.  
+- A definition of a conversion operator that returns the type of your class or structure.  
   
  Conversion operators are always unary, and you always use `CType` as the operator you are defining.  
   
 ## Declaration Syntax  
  The syntax for declaring an operator procedure is as follows:  
+ 
+ ```vb 
+ Public Shared [Widening | Narrowing] Operator operatorsymbol ( operand1 [,  operand2 ]) As datatype  
   
- `Public Shared`   `[Widening | Narrowing]`   `Operator`  *operatorsymbol*  `(` *operand1*  `[,`  *operand2* `]) As`  *datatype*  
+ ' Statements of the operator procedure.
   
- `' Statements of the operator procedure.`  
-  
- `End Operator`  
-  
+ End Operator
+ ```
+ 
  You use the `Widening` or `Narrowing` keyword only on a type conversion operator. The operator symbol is always [CType Function](../../../../visual-basic/language-reference/functions/ctype-function.md) for a type conversion operator.  
   
  You declare two operands to define a binary operator, and you declare one operand to define a unary operator, including a type conversion operator. All operands must be declared `ByVal`.  

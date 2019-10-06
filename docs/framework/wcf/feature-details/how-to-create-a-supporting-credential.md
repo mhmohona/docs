@@ -7,7 +7,7 @@ ms.assetid: d0952919-8bb4-4978-926c-9cc108f89806
 It is possible to have a custom security scheme that requires more than one credential. For example, a service may demand from the client not just a user name and password, but also a credential that proves the client is over the age of 18. The second credential is a *supporting credential*. This topic explains how to implement such credentials in an Windows Communication Foundation (WCF) client.  
   
 > [!NOTE]
->  The specification for supporting credentials is part of the WS-SecurityPolicy specification. For more information, see [Web Services Security Specifications](https://go.microsoft.com/fwlink/?LinkId=88537).  
+> The specification for supporting credentials is part of the WS-SecurityPolicy specification. For more information, see [Web Services Security Specifications](https://go.microsoft.com/fwlink/?LinkId=88537).  
   
 ## Supporting Tokens  
  In brief, when you use message security, a *primary credential* is always used to secure the message (for example, an X.509 certificate or a Kerberos ticket).  
@@ -33,28 +33,28 @@ It is possible to have a custom security scheme that requires more than one cred
   
  The first step when creating a custom binding is to create a security binding element, which can be one of three types:  
   
--   <xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement>  
+- <xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement>  
   
--   <xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement>  
+- <xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement>  
   
--   <xref:System.ServiceModel.Channels.TransportSecurityBindingElement>  
+- <xref:System.ServiceModel.Channels.TransportSecurityBindingElement>  
   
  All classes inherit from the <xref:System.ServiceModel.Channels.SecurityBindingElement>, which includes four relevant properties:  
   
--   <xref:System.ServiceModel.Channels.SecurityBindingElement.EndpointSupportingTokenParameters%2A>  
+- <xref:System.ServiceModel.Channels.SecurityBindingElement.EndpointSupportingTokenParameters%2A>  
   
--   <xref:System.ServiceModel.Channels.SecurityBindingElement.OperationSupportingTokenParameters%2A>  
+- <xref:System.ServiceModel.Channels.SecurityBindingElement.OperationSupportingTokenParameters%2A>  
   
--   <xref:System.ServiceModel.Channels.SecurityBindingElement.OptionalEndpointSupportingTokenParameters%2A>  
+- <xref:System.ServiceModel.Channels.SecurityBindingElement.OptionalEndpointSupportingTokenParameters%2A>  
   
--   <xref:System.ServiceModel.Channels.SecurityBindingElement.OptionalOperationSupportingTokenParameters%2A>  
+- <xref:System.ServiceModel.Channels.SecurityBindingElement.OptionalOperationSupportingTokenParameters%2A>  
   
 #### Scopes  
  Two scopes exist for supporting credentials:  
   
--   *Endpoint supporting tokens* support all operations of an endpoint. That is, the credential that the supporting token represents can be used whenever any endpoint operations are invoked.  
+- *Endpoint supporting tokens* support all operations of an endpoint. That is, the credential that the supporting token represents can be used whenever any endpoint operations are invoked.  
   
--   *Operation supporting tokens* support only a specific endpoint operation.  
+- *Operation supporting tokens* support only a specific endpoint operation.  
   
  As indicated by the property names, supporting credentials can be either required or optional. That is, if the supporting credential is used if it is present, although it is not necessary, but the authentication will not fail if it is not present.  
   

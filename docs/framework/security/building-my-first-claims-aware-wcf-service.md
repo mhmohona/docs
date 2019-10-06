@@ -7,9 +7,9 @@ author: "BrucePerlerMS"
 # Building My First Claims-Aware WCF Service
 ## Applies To  
   
--   Windows Identity Foundation (WIF)  
+- Windows Identity Foundation (WIF)  
   
--   Windows Communication Foundation (WCF)  
+- Windows Communication Foundation (WCF)  
   
 ## Overview  
  This topic outlines the scenario of building claims-aware WCF services using WIF. There are usually three participants in a claims-aware web service scenario: the web service itself, the end user, and the Security Token Service (STS). The following figure describes this scenario:  
@@ -26,14 +26,14 @@ author: "BrucePerlerMS"
   
  STS is a service that issues tokens upon successful authentication. Microsoft offers two industry standard STS’s:  
   
--   [Active Directory Federation Services (AD FS) 2.0](https://go.microsoft.com/fwlink/?LinkID=247516)
+- [Active Directory Federation Services (AD FS) 2.0](https://go.microsoft.com/fwlink/?LinkID=247516)
   
--   [Windows Azure Access Control Service (ACS)](https://go.microsoft.com/fwlink/?LinkID=247517)
+- [Windows Azure Access Control Service (ACS)](https://docs.microsoft.com/previous-versions/azure/azure-services/hh147631(v=azure.100))
   
  AD FS 2.0 is part of the Windows Server R2 and can be used as an STS for on-premise scenarios. Azure Active Directory Access Control (also known as Access Control Service or ACS) is a cloud service, offered as part of Microsoft Azure. For testing or educational purposes, you can also use other STS’s in order to build your claims-aware applications. For example, you can use the Local Development STS that is part of the [Identity and Access Tool for Visual Studio](https://go.microsoft.com/fwlink/?LinkID=245849) which is freely available online.  
   
- To build your first claims-aware WCF service using WIF, see [How To: Enable WIF for a WCF Web Service Application](../../../docs/framework/security/how-to-enable-wif-for-a-wcf-web-service-application.md).
+ To build your first claims-aware WCF service using WIF, see [How To: Enable WIF for a WCF Web Service Application](how-to-enable-wif-for-a-wcf-web-service-application.md).
   
 ## See also
 
-- [Getting Started With WIF](../../../docs/framework/security/getting-started-with-wif.md)
+- [Getting Started With WIF](getting-started-with-wif.md)

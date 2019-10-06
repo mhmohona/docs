@@ -14,7 +14,7 @@ ms.assetid: 5001227e-9326-48a4-9dcd-ba1b89ee6653
 This tutorial explains how to create a localized application by using the LocBaml tool.  
   
 > [!NOTE]
->  The LocBaml tool is not a production-ready application. It is presented as a sample that uses some of the localization APIs and illustrates how you might write a localization tool.  
+> The LocBaml tool is not a production-ready application. It is presented as a sample that uses some of the localization APIs and illustrates how you might write a localization tool.  
   
 <a name="Introduction"></a>   
 ## Overview  
@@ -22,19 +22,19 @@ This tutorial explains how to create a localized application by using the LocBam
   
 <a name="Requirements"></a>   
 ## Requirements  
- Over the course of this discussion, you will use [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)], which is a compiler that runs from the command line.  
+ Over the course of this discussion, you will use Microsoft build engine (MSBuild), which is a compiler that runs from the command line.  
   
- Also, you will be instructed to use a project file. For instructions on how to use [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] and project files, see [Build and Deploy](../app-development/building-and-deploying-wpf-applications.md).  
+ Also, you will be instructed to use a project file. For instructions on how to use MSBuild and project files, see [Build and Deploy](../app-development/building-and-deploying-wpf-applications.md).  
   
  All the examples in this discussion use en-US (English-US) as the culture. This enables you to work through the steps of the examples without installing a different language.  
   
 <a name="create_sample_app"></a>   
 ## Create a Sample Application  
- In this step, you will prepare your application for localization. In the [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] samples, a HelloApp sample is supplied that will be used for the code examples in this discussion. If you would like to use this sample, download the [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] files from the [LocBaml Tool Sample](https://go.microsoft.com/fwlink/?LinkID=160016).  
+ In this step, you will prepare your application for localization. In the [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] samples, a HelloApp sample is supplied that will be used for the code examples in this discussion. If you would like to use this sample, download the [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] files from the [LocBaml Tool Sample](https://github.com/microsoft/WPF-Samples/tree/master/Tools/LocBaml).  
   
 1. Develop your application to the point where you want to start localization.  
   
-2. Specify the development language in the project file so that [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] generates a main assembly and a satellite assembly (a file with the .resources.dll extension) to contain the neutral language resources. The project file in the HelloApp sample is HelloApp.csproj. In that file, you will find the development language identified as follows:  
+2. Specify the development language in the project file so that MSBuild generates a main assembly and a satellite assembly (a file with the .resources.dll extension) to contain the neutral language resources. The project file in the HelloApp sample is HelloApp.csproj. In that file, you will find the development language identified as follows:  
   
      `<UICulture>en-US</UICulture>`  
   
@@ -60,7 +60,7 @@ This tutorial explains how to create a localized application by using the LocBam
 ## Create the Neutral Language Resources Satellite Assembly  
  After the application is configured to generate a neutral language resources satellite assembly, you build the application. This generates the main application assembly, as well as the neutral language resources satellite assembly that is required by LocBaml for localization. To build the application:  
   
-1. Compile HelloApp to create a [!INCLUDE[TLA#tla_dll](../../../../includes/tlasharptla-dll-md.md)]:  
+1. Compile HelloApp to create a dynamic-link library (DLL):  
   
      **msbuild helloapp.csproj**  
   
@@ -85,24 +85,24 @@ This tutorial explains how to create a localized application by using the LocBam
   
 4. The options that you can specify when you run LocBaml are as follows:  
   
-    -   **parse** or **-p:** Parses Baml, resources, or [!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)] files to generate a .csv or .txt file.  
+    - **parse** or **-p:** Parses Baml, resources, or DLL files to generate a .csv or .txt file.  
   
-    -   **generate** or **-g:** Generates a localized binary file by using a translated file.  
+    - **generate** or **-g:** Generates a localized binary file by using a translated file.  
   
-    -   **out** or **-o** {*filedirectory*] **:** Output file name.  
+    - **out** or **-o** {*filedirectory*] **:** Output file name.  
   
-    -   **culture** or **-cul** {*culture*] **:** Locale of output assemblies.  
+    - **culture** or **-cul** {*culture*] **:** Locale of output assemblies.  
   
-    -   **translation** or **-trans** {*translation.csv*] **:** Translated or localized file.  
+    - **translation** or **-trans** {*translation.csv*] **:** Translated or localized file.  
   
-    -   **asmpath** or **-asmpath:** {*filedirectory*] **:** If your [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] code contains custom controls, you must supply the **asmpath** to the custom control assembly.  
+    - **asmpath** or **-asmpath:** {*filedirectory*] **:** If your [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] code contains custom controls, you must supply the **asmpath** to the custom control assembly.  
   
-    -   **nologo:** Displays no logo or copyright information.  
+    - **nologo:** Displays no logo or copyright information.  
   
-    -   **verbose:** Displays verbose mode information.  
+    - **verbose:** Displays verbose mode information.  
   
     > [!NOTE]
-    >  If you need a list of the options when you are running the tool, type     **LocBaml.exe** and press ENTER.  
+    > If you need a list of the options when you are running the tool, type     **LocBaml.exe** and press ENTER.  
   
 <a name="parse_dll"></a>   
 ## Use LocBaml to Parse a File  
@@ -115,7 +115,7 @@ This tutorial explains how to create a localized application by using the LocBam
      **LocBaml.exe /parse HelloApp.resources.dll /out:Hello.csv**  
   
     > [!NOTE]
-    >  If the input file, HelloApp.resources.dll, is not in the same directory as LocBaml.exe move one of the files so that both files are in the same directory.  
+    > If the input file, HelloApp.resources.dll, is not in the same directory as LocBaml.exe move one of the files so that both files are in the same directory.  
   
 3. When you run LocBaml to parse files, the output consists of seven fields delimited by commas (.csv files) or tabs (.txt files). The following shows the parsed .csv file for the HelloApp.resources.dll:
 
@@ -127,19 +127,19 @@ This tutorial explains how to create a localized application by using the LocBam
 
    The seven fields are:  
   
-   1.  **BAML Name**. The name of the BAML resource with respect to the source language satellite assembly.  
+   1. **BAML Name**. The name of the BAML resource with respect to the source language satellite assembly.  
   
-   2.  **Resource Key**. The localized resource identifier.  
+   2. **Resource Key**. The localized resource identifier.  
   
-   3.  **Category**. The value type. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
+   3. **Category**. The value type. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
   
-   4.  **Readability**. Whether the value can be read by a localizer. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
+   4. **Readability**. Whether the value can be read by a localizer. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
   
-   5.  **Modifiability**. Whether the value can be modified by a localizer. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
+   5. **Modifiability**. Whether the value can be modified by a localizer. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
   
-   6.  **Comments**. Additional description of the value to help determine how a value is localized. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
+   6. **Comments**. Additional description of the value to help determine how a value is localized. See [Localization Attributes and Comments](localization-attributes-and-comments.md).  
   
-   7.  **Value**. The text value to translate to the desired culture.  
+   7. **Value**. The text value to translate to the desired culture.  
   
    The following table shows how these fields map to the delimited values of the .csv file:  
   
@@ -166,7 +166,7 @@ This tutorial explains how to create a localized application by using the LocBam
      **LocBaml.exe /generate HelloApp.resources.dll /trans:Hello.csv /out:c:\ /cul:en-US**  
   
     > [!NOTE]
-    >  If the input file, Hello.csv, is not in the same directory as the executable, LocBaml.exe, move one of the files so that both files are in the same directory.  
+    > If the input file, Hello.csv, is not in the same directory as the executable, LocBaml.exe, move one of the files so that both files are in the same directory.  
   
 2. Replace the old HelloApp.resources.dll file in the C:\HelloApp\Bin\Debug\en-US\HelloApp.resources.dll directory with your newly created HelloApp.resources.dll file.  
   
@@ -182,9 +182,9 @@ This tutorial explains how to create a localized application by using the LocBam
   
 7. To test the new satellite assembly, you need to change the culture under which your application will run. You can do this in one of two ways:  
   
-    -   Change your operating system's regional settings (**Start** &#124; **Control Panel** &#124; **Regional and Language Options**).  
+    - Change your operating system's regional settings (**Start** &#124; **Control Panel** &#124; **Regional and Language Options**).  
   
-    -   In your application, add the following code to App.xaml.cs:  
+    - In your application, add the following code to App.xaml.cs:  
   
    [!code-xaml[LocBamlChangeCultureSnippets#LocBamlChangeCultureMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/LocBamlChangeCultureSnippets/CSharp/App.xaml#locbamlchangeculturemarkup)]
    [!code-csharp[LocBamlChangeCultureSnippets#LocBamlChangeCultureCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/LocBamlChangeCultureSnippets/CSharp/App.xaml.cs#locbamlchangeculturecodebehind)]
@@ -193,11 +193,11 @@ This tutorial explains how to create a localized application by using the LocBam
 <a name="Some_Tips_for_Using_LocBaml"></a>   
 ## Some Tips for Using LocBaml  
   
--   All dependent assemblies that define custom controls must be copied into the local directory of LocBaml or installed into the GAC. This is necessary because the localization API must have access to the dependent assemblies when it reads the [!INCLUDE[TLA#tla_baml](../../../../includes/tlasharptla-baml-md.md)].  
+- All dependent assemblies that define custom controls must be copied into the local directory of LocBaml or installed into the GAC. This is necessary because the localization API must have access to the dependent assemblies when it reads the binary XAML (BAML).  
   
--   If the main assembly is signed, the generated resource DLL must also be signed in order for it to be loaded.  
+- If the main assembly is signed, the generated resource DLL must also be signed in order for it to be loaded.  
   
--   The version of the localized resource DLL needs to be synchronized with the main assembly.  
+- The version of the localized resource DLL needs to be synchronized with the main assembly.  
   
 <a name="Whats_Next"></a>   
 ## What's Next  

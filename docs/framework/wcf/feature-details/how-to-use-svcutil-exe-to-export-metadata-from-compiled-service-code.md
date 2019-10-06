@@ -6,14 +6,14 @@ ms.assetid: 95d0aed3-16a2-4398-89bb-39418eeb7355
 # How to: Use Svcutil.exe to Export Metadata from Compiled Service Code
 Svcutil.exe can export metadata for services, contracts, and data types in compiled assemblies, as follows:  
   
--   To export metadata for all compiled service contracts for a set of assemblies using Svcutil.exe, specify the assemblies as input parameters. This is the default behavior.  
+- To export metadata for all compiled service contracts for a set of assemblies using Svcutil.exe, specify the assemblies as input parameters. This is the default behavior.  
   
--   To export metadata for a compiled service using Svcutil.exe, specify the service assembly or assemblies as input parameters. You must use the `/serviceName` option to indicate the configuration name of the service you want to export. Svcutil.exe automatically loads the configuration file for the specified executable assembly.  
+- To export metadata for a compiled service using Svcutil.exe, specify the service assembly or assemblies as input parameters. You must use the `/serviceName` option to indicate the configuration name of the service you want to export. Svcutil.exe automatically loads the configuration file for the specified executable assembly.  
   
--   To export all data contract types within a set of assemblies, use the `/dataContractOnly` option.  
+- To export all data contract types within a set of assemblies, use the `/dataContractOnly` option.  
   
 > [!NOTE]
->  Use the `/reference` option to specify the file paths to any dependent assemblies.  
+> Use the `/reference` option to specify the file paths to any dependent assemblies.  
   
 ### To export metadata for compiled service contracts  
   
@@ -22,9 +22,9 @@ Svcutil.exe can export metadata for services, contracts, and data types in compi
 2. Run Svcutil.exe on the compiled assemblies.  
   
     > [!NOTE]
-    >  You might need to use the `/reference` switch to specify the file path to any dependent assemblies.  
+    > You might need to use the `/reference` switch to specify the file path to any dependent assemblies.  
   
-    ```  
+    ```console
     svcutil.exe Contracts.dll  
     ```  
   
@@ -50,9 +50,9 @@ Svcutil.exe can export metadata for services, contracts, and data types in compi
 3. Run Svcutil.exe on the compiled service executable using the `/serviceName` switch to specify the configuration name of the service.  
   
     > [!NOTE]
-    >  You might need to use the `/reference` switch to specify the file path to any dependent assemblies.  
+    > You might need to use the `/reference` switch to specify the file path to any dependent assemblies.  
   
-    ```  
+    ```console  
     svcutil.exe /serviceName:MyService Service.exe /reference:path/Contracts.dll  
     ```  
   
@@ -63,9 +63,9 @@ Svcutil.exe can export metadata for services, contracts, and data types in compi
 2. Run Svcutil.exe on the compiled assemblies using the `/dataContract` switch to specify that only metadata for data contracts should be generated.  
   
     > [!NOTE]
-    >  You might need to use the `/reference` switch to specify the file path to any dependent assemblies.  
+    > You might need to use the `/reference` switch to specify the file path to any dependent assemblies.  
   
-    ```  
+    ```console  
     svcutil.exe /dataContractOnly Contracts.dll  
     ```  
   
@@ -74,26 +74,26 @@ Svcutil.exe can export metadata for services, contracts, and data types in compi
   
  To export metadata for the service contract.  
   
-```  
+```console  
 svcutil.exe Contracts.dll  
 ```  
   
  To export metadata for the data contracts.  
   
-```  
+```console  
 svcutil.exe /dataContractOnly Contracts.dll  
 ```  
   
  To export metadata for the service implementation.  
   
-```  
+```console  
 svcutil.exe /serviceName:MyService Service.exe /reference:<path>/Contracts.dll  
 ```  
   
  The `<path>` is the path to Contracts.dll.  
   
-```  
-// The following service contract and data contracts are compiled into   
+```csharp
+// The following service contract and data contracts are compiled into
 // Contracts.dll.  
 [ServiceContract(ConfigurationName="IPeopleFinder")]  
 public interface IPersonFinder  
@@ -127,8 +127,10 @@ public class Address
     [DataMember]  
     public Person person;  
 }  
-  
-// The following service implementation is compiled into Service.exe.     
+```
+
+```csharp
+// The following service implementation is compiled into Service.exe.
 // This service uses the contracts specified in Contracts.dll.  
 [ServiceBehavior(ConfigurationName = "MyService")]  
 public class MyService : IPersonFinder  
@@ -140,7 +142,9 @@ public class MyService : IPersonFinder
         return address;  
     }  
 }  
-  
+```
+
+```xml  
 <!-- The following is the configuration file for Service.exe. -->  
 <?xml version="1.0" encoding="utf-8" ?>  
 <configuration>  

@@ -3,8 +3,9 @@ title: .NET Standard
 description: Learn about .NET Standard, its versions and the .NET implementations that support it.
 author: mairaw
 ms.author: mairaw
-ms.date: 02/25/2019
+ms.date: 09/23/2019
 ms.technology: dotnet-standard
+ms.custom: "updateeachrelease"
 ms.assetid: c044882c-af15-45f2-96d1-534557a5ee9b
 ---
 # .NET Standard
@@ -21,9 +22,9 @@ The various .NET implementations target specific versions of .NET Standard. Each
 
 ## .NET implementation support
 
-The following table lists the minimum platform versions that support each .NET Standard version.
+The following table lists the **minimum** platform versions that support each .NET Standard version. That means that later versions of a listed platform also support the corresponding .NET Standard version. For example, .NET Core 2.2 supports .NET Standard 2.0 and earlier.
 
-[!INCLUDE [net-standard-table](~/includes/net-standard-table.md)]
+[!INCLUDE [net-standard-table](../../includes/net-standard-table.md)]
 
 To find the highest version of .NET Standard that you can target, do the following steps:
 

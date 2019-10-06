@@ -23,7 +23,7 @@ Generates a strong name signature for the specified assembly, according to the s
   
 ## Syntax  
   
-```  
+```cpp
 HRESULT StrongNameSignatureGenerationEx (  
     [in]  LPCWSTR   wszFilePath,  
     [in]  LPCWSTR   wszKeyContainer,  
@@ -63,9 +63,9 @@ HRESULT StrongNameSignatureGenerationEx (
  `dwFlags`  
  [in] One or more of the following values:  
   
--   `SN_SIGN_ALL_FILES` (0x00000001) - Recompute all hashes for linked modules.  
+- `SN_SIGN_ALL_FILES` (0x00000001) - Recompute all hashes for linked modules.  
   
--   `SN_TEST_SIGN` (0x00000002) - Test-sign the assembly.  
+- `SN_TEST_SIGN` (0x00000002) - Test-sign the assembly.  
   
 ## Return Value  
  `S_OK` if the method completed successfully; otherwise, an HRESULT value that indicates failure (see [Common HRESULT Values](https://go.microsoft.com/fwlink/?LinkId=213878) for a list).  

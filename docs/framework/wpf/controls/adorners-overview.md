@@ -17,13 +17,13 @@ Adorners are a special type of <xref:System.Windows.FrameworkElement>, used to p
   
  Common applications for adorners include:  
   
--   Adding functional handles to a <xref:System.Windows.UIElement> that enable a user to manipulate the element in some way (resize, rotate, reposition, etc.).  
+- Adding functional handles to a <xref:System.Windows.UIElement> that enable a user to manipulate the element in some way (resize, rotate, reposition, etc.).  
   
--   Provide visual feedback to indicate various states, or in response to various events.  
+- Provide visual feedback to indicate various states, or in response to various events.  
   
--   Overlay visual decorations on a <xref:System.Windows.UIElement>.  
+- Overlay visual decorations on a <xref:System.Windows.UIElement>.  
   
--   Visually mask or override part or all of a <xref:System.Windows.UIElement>.  
+- Visually mask or override part or all of a <xref:System.Windows.UIElement>.  
   
  [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] provides a basic framework for adorning visual elements. The following table lists the primary types used when adorning objects, and their purpose. Several usage examples follow.  
   
@@ -38,7 +38,7 @@ Adorners are a special type of <xref:System.Windows.FrameworkElement>, used to p
  The adorners framework provided by [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] is intended primarily to support the creation of custom adorners. A custom adorner is created by implementing a class that inherits from the abstract <xref:System.Windows.Documents.Adorner> class.  
   
 > [!NOTE]
->  The parent of an <xref:System.Windows.Documents.Adorner> is the <xref:System.Windows.Documents.AdornerLayer> that renders the <xref:System.Windows.Documents.Adorner>, not the element being adorned.  
+> The parent of an <xref:System.Windows.Documents.Adorner> is the <xref:System.Windows.Documents.AdornerLayer> that renders the <xref:System.Windows.Documents.Adorner>, not the element being adorned.  
   
  The following example shows a class that implements a simple adorner. The example adorner simply adorns the corners of a <xref:System.Windows.UIElement> with circles.  
   
@@ -54,7 +54,7 @@ Adorners are a special type of <xref:System.Windows.FrameworkElement>, used to p
  It is important to note that adorners do not include any inherent rendering behavior; ensuring that an adorner renders is the responsibility of the adorner implementer.   A common way of implementing rendering behavior is to override the <xref:System.Windows.UIElement.OnRender%2A> method and use one or more <xref:System.Windows.Media.DrawingContext> objects to render the adorner's visuals as needed (as shown in the example above).  
   
 > [!NOTE]
->  Anything placed in the adorner layer is rendered on top of the rest of any styles you have set. In other words, adorners are always visually on top and cannot be overridden using z-order.  
+> Anything placed in the adorner layer is rendered on top of the rest of any styles you have set. In other words, adorners are always visually on top and cannot be overridden using z-order.  
   
 <a name="adorner_events_hittest"></a>   
 ## Events and Hit Testing  
@@ -78,7 +78,7 @@ Adorners are a special type of <xref:System.Windows.FrameworkElement>, used to p
  [!code-vb[Adorners_SimpleCircleAdorner#_AdornSingleElement](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Adorners_SimpleCircleAdorner/VisualBasic/Window1.xaml.vb#_adornsingleelement)]  
   
 > [!NOTE]
->  Using [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] to bind an adorner to another element is currently not supported.  
+> Using [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] to bind an adorner to another element is currently not supported.  
   
 <a name="adorn_children_panel"></a>   
 ## Adorning the Children of a Panel  

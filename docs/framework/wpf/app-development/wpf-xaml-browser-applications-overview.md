@@ -17,15 +17,15 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
   
  This topic contains the following sections:  
   
--   [Creating a New XAML Browser Application (XBAP)](#creating_a_new_xaml_browser_application_xbap)  
+- [Creating a New XAML Browser Application (XBAP)](#creating_a_new_xaml_browser_application_xbap)  
   
--   [Deploying an XBAP](#deploying_a_xbap)  
+- [Deploying an XBAP](#deploying_a_xbap)  
   
--   [Communicating with the Host Web Page](#communicating_with_the_host_web_page)  
+- [Communicating with the Host Web Page](#communicating_with_the_host_web_page)  
   
--   [XBAP Security Considerations](#xbap_security_considerations)  
+- [XBAP Security Considerations](#xbap_security_considerations)  
   
--   [XBAP Start Time Performance Considerations](#xbap_start_time_performance_considerations)  
+- [XBAP Start Time Performance Considerations](#xbap_start_time_performance_considerations)  
   
 <a name="creating_a_new_xaml_browser_application_xbap"></a>   
 ## Creating a New XAML Browser Application (XBAP)  
@@ -34,7 +34,7 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
  When you run the XBAP project, it opens in a browser window instead of a stand-alone window. When you debug the XBAP from Visual Studio, the application runs with Internet zone permission and will therefore throw security exceptions if those permissions are exceeded. For more information, see [Security](../security-wpf.md) and [WPF Partial Trust Security](../wpf-partial-trust-security.md).  
   
 > [!NOTE]
->  If you are not developing with Visual Studio or want to learn more about the project files, see [Building a WPF Application](building-a-wpf-application-wpf.md).  
+> If you are not developing with Visual Studio or want to learn more about the project files, see [Building a WPF Application](building-a-wpf-application-wpf.md).  
   
 <a name="deploying_a_xbap"></a>   
 ## Deploying an XBAP  
@@ -46,7 +46,7 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
 |Application manifest (.manifest)|This contains metadata associated with the application and has a .manifest extension.|  
 |Deployment manifest (.xbap)|This file contains the information that ClickOnce uses to deploy the application and has the .xbap extension.|  
   
- You deploy XBAPs to a Web server, for example [!INCLUDE[TLA#tla_iis50](../../../../includes/tlasharptla-iis50-md.md)] or later versions. You do not have to install the .NET Framework on the Web server, but you do have to register the [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] [!INCLUDE[TLA#tla_mime](../../../../includes/tlasharptla-mime-md.md)] types and file name extensions. For more information, see [Configure IIS 5.0 and IIS 6.0 to Deploy WPF Applications](how-to-configure-iis-5-0-and-iis-6-0-to-deploy-wpf-applications.md).  
+ You deploy XBAPs to a Web server, for example Microsoft Internet Information Services (IIS) 5.0 or later versions. You do not have to install the .NET Framework on the Web server, but you do have to register the [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] Multipurpose Internet Mail Extensions (MIME) types and file name extensions. For more information, see [Configure IIS 5.0 and IIS 6.0 to Deploy WPF Applications](how-to-configure-iis-5-0-and-iis-6-0-to-deploy-wpf-applications.md).  
   
  To prepare your XBAP for deployment, copy the .exe and the associated manifests to the Web server. Create an HTML page that contains a hyperlink to open the deployment manifest, which is the file that has the .xbap extension. When the user clicks the link to the .xbap file, ClickOnce automatically handles the mechanics of downloading and starting the application. The following example code shows an HTML page that contains a hyperlink that points to an XBAP.  
   
@@ -117,7 +117,7 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
      The changes will take effect after you restart Internet Explorer.  
   
 > [!CAUTION]
->  Enabling active content in Internet Explorer may put your computer at risk. If you do not want to change your Internet Explorer security settings, you can launch the HTML page from a server and attach the Visual Studio debugger to the process.  
+> Enabling active content in Internet Explorer may put your computer at risk. If you do not want to change your Internet Explorer security settings, you can launch the HTML page from a server and attach the Visual Studio debugger to the process.  
   
 <a name="xbap_security_considerations"></a>   
 ## XBAP Security Considerations  
@@ -125,17 +125,17 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
   
  When you use a <xref:System.Windows.Controls.WebBrowser> control in your application, WPF internally instantiates the native WebBrowser ActiveX control. When your application is a partial-trust XBAP running in Internet Explorer, the ActiveX control runs in a dedicated thread of the Internet Explorer process. Therefore, the following limitations apply:  
   
--   The <xref:System.Windows.Controls.WebBrowser> control should provide behavior similar to the host browser, including security restrictions. Some of these security restrictions can be controlled through the Internet Explorer security settings. For more information, see [Security](../security-wpf.md).  
+- The <xref:System.Windows.Controls.WebBrowser> control should provide behavior similar to the host browser, including security restrictions. Some of these security restrictions can be controlled through the Internet Explorer security settings. For more information, see [Security](../security-wpf.md).  
   
--   An exception is thrown when an XBAP is loaded cross-domain in an HTML page.  
+- An exception is thrown when an XBAP is loaded cross-domain in an HTML page.  
   
--   Input is on a separate thread from the WPF <xref:System.Windows.Controls.WebBrowser>, so keyboard input cannot be intercepted and the IME state is not shared.  
+- Input is on a separate thread from the WPF <xref:System.Windows.Controls.WebBrowser>, so keyboard input cannot be intercepted and the IME state is not shared.  
   
--   The timing or order of navigation may be different due to the ActiveX control running on another thread. For example, navigating to a page is not always cancelled by starting another navigation request.  
+- The timing or order of navigation may be different due to the ActiveX control running on another thread. For example, navigating to a page is not always cancelled by starting another navigation request.  
   
--   A custom ActiveX control may have trouble with communication since the WPF application is running in a separate thread.  
+- A custom ActiveX control may have trouble with communication since the WPF application is running in a separate thread.  
   
--   <xref:System.Windows.Interop.HwndHost.MessageHook> does not get raised because <xref:System.Windows.Interop.HwndHost> cannot subclass a window running in another thread or process.  
+- <xref:System.Windows.Interop.HwndHost.MessageHook> does not get raised because <xref:System.Windows.Interop.HwndHost> cannot subclass a window running in another thread or process.  
   
 ### Creating a Full-Trust XBAP  
  If your XBAP requires full trust, you can change your project to enable this permission. The following steps describe how to enable full trust:  
@@ -146,9 +146,9 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
   
  This setting makes the following changes:  
   
--   In the project file, the `<TargetZone>` element value is changed to `Custom`.  
+- In the project file, the `<TargetZone>` element value is changed to `Custom`.  
   
--   In the application manifest (app.manifest), an `Unrestricted="true"` attribute is added to the `<xref:System.Security.PermissionSet> element.  
+- In the application manifest (app.manifest), an `Unrestricted="true"` attribute is added to the `<xref:System.Security.PermissionSet> element.  
   
     ```xml
     <PermissionSet class="System.Security.PermissionSet"   
@@ -168,7 +168,7 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
 |Internet|Fails with "Trust Not Granted"|Sign the XBAP with a certificate.|  
   
 > [!NOTE]
->  The behavior described in the previous table is for full-trust XBAPs that do not follow the ClickOnce Trusted Deployment model.  
+> The behavior described in the previous table is for full-trust XBAPs that do not follow the ClickOnce Trusted Deployment model.  
   
  It is recommended that you use the ClickOnce Trusted Deployment model for deploying a full-trust XBAP. This model allows your XBAP to be granted full trust automatically, regardless of the security zone, so that the user is not prompted. As part of this model, you must sign your application with a certificate from a trusted publisher. For more information, see [Trusted Application Deployment Overview](/visualstudio/deployment/trusted-application-deployment-overview) and [Introduction to Code Signing](https://go.microsoft.com/fwlink/?LinkId=166327).  
   
@@ -176,7 +176,7 @@ ms.assetid: 3a7a86a8-75d5-4898-96b9-73da151e5e16
 ## XBAP Start Time Performance Considerations  
  An important aspect of XBAP performance is its start time. If an XBAP is the first WPF application to load, the *cold start* time can be ten seconds or more. This is because the progress page is rendered by WPF, and both the CLR and WPF must be cold-started to display the application.  
   
- Starting in [!INCLUDE[net_v35SP1_short](../../../../includes/net-v35sp1-short-md.md)], XBAP cold-start time is mitigated by displaying an unmanaged progress page early in the deployment cycle. The progress page appears almost immediately after the application is started, because it is displayed by native hosting code and rendered in HTML.  
+ Starting in .NET Framework 3.5 SP1, XBAP cold-start time is mitigated by displaying an unmanaged progress page early in the deployment cycle. The progress page appears almost immediately after the application is started, because it is displayed by native hosting code and rendered in HTML.  
   
  In addition, improved concurrency of the ClickOnce download sequence improves start time by up to ten percent. After ClickOnce downloads and validates manifests, the application download starts, and the progress bar starts to update.  
   

@@ -127,7 +127,7 @@ Before you collect performance data for a specific area, you should already have
 
 2. Exhausted other areas that you know of without finding anything that could explain the performance problem you saw.
 
-See the blog [Understand the problem before you try to find a solution](https://blogs.msdn.microsoft.com/maoni/2006/09/01/understand-the-problem-before-you-try-to-find-a-solution/) for more information on the fundamentals of memory and the CPU.
+See the blog [Understand the problem before you try to find a solution](https://devblogs.microsoft.com/dotnet/understand-the-problem-before-you-try-to-find-a-solution/) for more information on the fundamentals of memory and the CPU.
 
 You can use the following tools to collect data on LOH performance:
 
@@ -149,9 +149,9 @@ These performance counters are usually a good first step in investigating perfor
 
    Displays the current size, in bytes, including free space, of the LOH. This counter is updated at the end of a garbage collection, not at each allocation.
 
-A common way to look at performance counters is with Performance Monitor (perfmon.exe). Use “Add Counters” to add the interesting counter for processes that you care about. You can save the performance counter data to a log file, as Figure 4 shows.
+A common way to look at performance counters is with Performance Monitor (perfmon.exe). Use “Add Counters” to add the interesting counter for processes that you care about. You can save the performance counter data to a log file, as Figure 4 shows:
 
-![Figure 4: Adding performance counters.](media/loh/perfcounter.png)\
+![Screenshow that shows adding performance counters.](media/large-object-heap/add-performance-counter.png)
 Figure 4: The LOH after a generation 2 GC
 
 Performance counters can also be queried programmatically. Many people collect them this way as part of their routine testing process. When they spot counters with values that are out of the ordinary, they use other means to get more detailed data to help with the investigation.
@@ -163,13 +163,13 @@ Performance counters can also be queried programmatically. Many people collect t
 
 The garbage collector provides a rich set of ETW events to help you understand what the heap is doing and why. The following blog posts show how to collect and understand GC events with ETW:
 
-- [GC ETW Events - 1](https://blogs.msdn.microsoft.com/maoni/2014/12/22/gc-etw-events-1/)
+- [GC ETW Events - 1](https://devblogs.microsoft.com/dotnet/gc-etw-events-1/)
 
-- [GC ETW Events - 2](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-2/)
+- [GC ETW Events - 2](https://devblogs.microsoft.com/dotnet/gc-etw-events-2/)
 
-- [GC ETW Events - 3](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/)
+- [GC ETW Events - 3](https://devblogs.microsoft.com/dotnet/gc-etw-events-3/)
 
-- [GC ETW Events - 4](https://blogs.msdn.microsoft.com/maoni/2014/12/30/gc-etw-events-4/)
+- [GC ETW Events - 4](https://devblogs.microsoft.com/dotnet/gc-etw-events-4/)
 
 To identify excessive generation 2 GCs caused by temporary LOH allocations, look at the Trigger Reason column for GCs. For a simple test that only allocates temporary large objects, you can collect information on ETW events with the following [PerfView](https://www.microsoft.com/download/details.aspx?id=28567) command line:
 
@@ -179,7 +179,7 @@ perfview /GCCollectOnly /AcceptEULA /nogui collect
 
 The result is something like this:
 
-![Figure 5: Examining ETW events using PerfView](media/loh/perfview.png)
+![Screenshot that shows ETW events in PerfView.](media/large-object-heap/event-tracing-windows-perfview.png)
 Figure 5: ETW events shown using PerfView
 
 As you can see, all GCs are generation 2 GCs, and they are all triggered by AllocLarge, which means that allocating a large object triggered this GC. We know that these allocations are temporary because the **LOH Survival Rate %** column says 1%.
@@ -192,7 +192,7 @@ perfview /GCOnly /AcceptEULA /nogui collect
 
 collects an AllocationTick event which is fired approximately every 100k worth of allocations. In other words, an event is fired each time a large object is allocated. You can then look at one of the GC Heap Alloc views which show you the callstacks that allocated large objects:
 
-![Figure 6: A GC Heap Alloc view](media/loh/perfview2.png)\
+![Screenshot that shows a garbage collector heap view.](media/large-object-heap/garbage-collector-heap.png)
 Figure 6: A GC Heap Alloc view
 
 As you can see, this is a very simple test that just allocates large objects from its `Main` method.
@@ -206,7 +206,7 @@ If all you have is a memory dump and you need to look at what objects are actual
 
 The following shows sample output from analyzing the LOH:
 
-```
+```console
 0:003> .loadby sos mscorwks
 0:003> !eeheap -gc
 Number of GC Heaps: 1
@@ -247,7 +247,7 @@ Because the LOH is not compacted, sometimes the LOH is thought to be the source 
 
    The following example shows fragmentation in the VM space:
 
-   ```
+   ```console
    0:000> !address
    00000000 : 00000000 - 00010000
    Type     00000000

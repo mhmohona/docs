@@ -17,25 +17,25 @@ This topic introduces <xref:System.Windows.Media.Drawing> objects and describes 
 ## What Is a Drawing Object?  
  A <xref:System.Windows.Media.Drawing> object describes visible content, such as a shape, bitmap, video, or a line of text. Different types of drawings describe different types of content. The following is a list of the different types of drawing objects.  
   
--   <xref:System.Windows.Media.GeometryDrawing> – Draws a shape.  
+- <xref:System.Windows.Media.GeometryDrawing> – Draws a shape.  
   
--   <xref:System.Windows.Media.ImageDrawing> – Draws an image.  
+- <xref:System.Windows.Media.ImageDrawing> – Draws an image.  
   
--   <xref:System.Windows.Media.GlyphRunDrawing> – Draws text.  
+- <xref:System.Windows.Media.GlyphRunDrawing> – Draws text.  
   
--   <xref:System.Windows.Media.VideoDrawing> – Plays an audio or video file.  
+- <xref:System.Windows.Media.VideoDrawing> – Plays an audio or video file.  
   
--   <xref:System.Windows.Media.DrawingGroup> – Draws other drawings. Use a drawing group to combine other drawings into a single composite drawing.  
+- <xref:System.Windows.Media.DrawingGroup> – Draws other drawings. Use a drawing group to combine other drawings into a single composite drawing.  
   
  <xref:System.Windows.Media.Drawing> objects are versatile; there are many ways you can use a <xref:System.Windows.Media.Drawing> object.  
   
--   You can display it as an image by using a <xref:System.Windows.Media.DrawingImage> and an <xref:System.Windows.Controls.Image> control.  
+- You can display it as an image by using a <xref:System.Windows.Media.DrawingImage> and an <xref:System.Windows.Controls.Image> control.  
   
--   You can use it with a <xref:System.Windows.Media.DrawingBrush> to paint an object, such as the <xref:System.Windows.Controls.Page.Background%2A> of a <xref:System.Windows.Controls.Page>.  
+- You can use it with a <xref:System.Windows.Media.DrawingBrush> to paint an object, such as the <xref:System.Windows.Controls.Page.Background%2A> of a <xref:System.Windows.Controls.Page>.  
   
--   You can use it to describe the appearance of a <xref:System.Windows.Media.DrawingVisual>.  
+- You can use it to describe the appearance of a <xref:System.Windows.Media.DrawingVisual>.  
   
--   You can use it to enumerate the contents of a <xref:System.Windows.Media.Visual>.  
+- You can use it to enumerate the contents of a <xref:System.Windows.Media.Visual>.  
   
  WPF provides other types of objects that are capable of drawing shapes, bitmaps, text, and media. For example, you can also use <xref:System.Windows.Shapes.Shape> objects to draw shapes, and the <xref:System.Windows.Controls.MediaElement> control provides another way to add video to your application. So when should you use <xref:System.Windows.Media.Drawing> objects? When you can sacrifice framework level features to gain performance benefits or when you need <xref:System.Windows.Freezable> features. Because <xref:System.Windows.Media.Drawing> objects lack support for [Layout](../advanced/layout.md), input, and focus, they provide performance benefits that make them ideal for describing backgrounds, clip art, and for low-level drawing with <xref:System.Windows.Media.Visual> objects.  
   
@@ -79,12 +79,12 @@ A 100 by 100 ImageDrawing
 ## Play Media (Code Only)  
   
 > [!NOTE]
->  Although you can declare a <xref:System.Windows.Media.VideoDrawing> in [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], you can only load and play its media using code. To play video in [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], use a <xref:System.Windows.Controls.MediaElement> instead.  
+> Although you can declare a <xref:System.Windows.Media.VideoDrawing> in [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], you can only load and play its media using code. To play video in [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], use a <xref:System.Windows.Controls.MediaElement> instead.  
   
  To play an audio or video file, you use a <xref:System.Windows.Media.VideoDrawing> and a <xref:System.Windows.Media.MediaPlayer>. There are two ways to load and play media. The first is to use a <xref:System.Windows.Media.MediaPlayer> and a <xref:System.Windows.Media.VideoDrawing> by themselves, and the second way is to create your own <xref:System.Windows.Media.MediaTimeline> to use with the <xref:System.Windows.Media.MediaPlayer> and <xref:System.Windows.Media.VideoDrawing>.  
   
 > [!NOTE]
->  When distributing media with your application, you cannot use a media file as a project resource, like you would an image. In your project file, you must instead set the media type to `Content` and set `CopyToOutputDirectory` to `PreserveNewest` or `Always`.  
+> When distributing media with your application, you cannot use a media file as a project resource, like you would an image. In your project file, you must instead set the media type to `Content` and set `CopyToOutputDirectory` to `PreserveNewest` or `Always`.  
   
  To play media without creating your own <xref:System.Windows.Media.MediaTimeline>, you perform the following steps.  
   

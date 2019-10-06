@@ -8,7 +8,7 @@ helpviewer_keywords:
 ms.assetid: f86acc91-2b67-4039-8555-505734491d36
 ---
 # Serialization Limitations of XamlWriter.Save
-The [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] <xref:System.Windows.Markup.XamlWriter.Save%2A> can be used to serialize the contents of a [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] application as a [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] file. However, there are some notable limitations in exactly what is serialized. These limitations and some general considerations are documented in this topic.  
+The API <xref:System.Windows.Markup.XamlWriter.Save%2A> can be used to serialize the contents of a [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] application as a [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] file. However, there are some notable limitations in exactly what is serialized. These limitations and some general considerations are documented in this topic.  
 
 <a name="Run_Time__Not_Design_Time_Representation"></a>   
 ## Run-Time, Not Design-Time Representation  
@@ -30,8 +30,8 @@ The [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] <xref:Sy
 ## Realistic Scenarios for Use of XAMLWriter.Save  
  While the limitations listed here are fairly substantial, there are still several appropriate scenarios for using <xref:System.Windows.Markup.XamlWriter.Save%2A> for serialization.  
   
--   Vector or graphical output: The output of the rendered area can be used to reproduce the same vector or graphics when reloaded.  
+- Vector or graphical output: The output of the rendered area can be used to reproduce the same vector or graphics when reloaded.  
   
--   Rich text and flow documents: Text and all element formatting and element containment within it is preserved in the output. This can be useful for mechanisms that approximate a clipboard functionality.  
+- Rich text and flow documents: Text and all element formatting and element containment within it is preserved in the output. This can be useful for mechanisms that approximate a clipboard functionality.  
   
--   Preserving business object data: If you have stored data in custom elements, such as [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] data, so long as your business objects follow basic [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] rules such as providing custom constructors and conversion for by-reference property values, these business objects can be perpetuated through serialization.
+- Preserving business object data: If you have stored data in custom elements, such as [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] data, so long as your business objects follow basic [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] rules such as providing custom constructors and conversion for by-reference property values, these business objects can be perpetuated through serialization.

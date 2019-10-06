@@ -16,7 +16,7 @@ ms.assetid: 2a183664-bfbf-4ff0-96f6-c836284ea916
   
 ### To build the sample using Visual Studio  
   
-1. Open [!INCLUDE[fileExplorer](../../../includes/fileexplorer-md.md)] and navigate to one of the language-specific subdirectories for the sample.  
+1. Open File Explorer and navigate to one of the language-specific subdirectories for the sample.  
   
 2. Navigate to the V1 Application subdirectory of the directory you selected in the previous step.  
   
@@ -37,7 +37,7 @@ ms.assetid: 2a183664-bfbf-4ff0-96f6-c836284ea916
  Alternatively, navigate to the directories that contain the new executables and run them sequentially.  
   
 > [!NOTE]
->  The sample builds console applications. You must launch and run them in a Command Prompt window to view their output.  
+> The sample builds console applications. You must launch and run them in a Command Prompt window to view their output.  
   
 ## See also
 

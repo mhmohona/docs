@@ -7,46 +7,46 @@ author: "BrucePerlerMS"
 # How To: Debug Claims-Aware Applications And Services Using WIF Tracing
 ## Applies To  
   
--   Microsoft® Windows® Identity Foundation (WIF)  
+- Microsoft® Windows® Identity Foundation (WIF)  
   
--   Service Trace Viewer Tool (SvcTraceViewer.exe)  
+- Service Trace Viewer Tool (SvcTraceViewer.exe)  
   
--   Troubleshooting and Debugging WIF Applications  
+- Troubleshooting and Debugging WIF Applications  
   
 ## Summary  
  This How-To describes required steps for how to configure WIF tracing, collect trace logs, and how to analyze the trace logs using Trace Viewer tool. It provides general mapping for trace entries to actions needed to troubleshoot issues related to WIF.  
   
 ## Contents  
   
--   Objectives  
+- Objectives  
   
--   Summary of Steps  
+- Summary of Steps  
   
--   Step 1 – Configure WIF Tracing Using Web.config Configuration File  
+- Step 1 – Configure WIF Tracing Using Web.config Configuration File  
   
--   Step 2 – Analyze WIF Trace Files Using Trace Viewer Tool  
+- Step 2 – Analyze WIF Trace Files Using Trace Viewer Tool  
   
--   Step 3 – Identify Solutions to Fix WIF Related Issues  
+- Step 3 – Identify Solutions to Fix WIF Related Issues  
   
--   Related Items  
+- Related Items  
   
 ## Objectives  
   
--   Configure WIF tracing.  
+- Configure WIF tracing.  
   
--   View trace logs in the Trace Viewer tool.  
+- View trace logs in the Trace Viewer tool.  
   
--   Identify WIF related issues in the trace logs.  
+- Identify WIF related issues in the trace logs.  
   
--   Apply corrective actions to WIF related issues found in the trace logs.  
+- Apply corrective actions to WIF related issues found in the trace logs.  
   
 ## Summary of Steps  
   
--   Step 1 – Configure WIF Tracing Using Web.config Configuration File  
+- Step 1 – Configure WIF Tracing Using Web.config Configuration File  
   
--   Step 2 – Analyze WIF Trace Files Using Trace Viewer Tool  
+- Step 2 – Analyze WIF Trace Files Using Trace Viewer Tool  
   
--   Step 3 – Identify Solutions to Fix WIF Related Issues  
+- Step 3 – Identify Solutions to Fix WIF Related Issues  
   
 ## Step 1 – Configure WIF Tracing Using Web.config Configuration File  
  In this step, you will add changes to configuration sections in the *Web.config* file that enable WIF to trace its events and store them in a trace log.  
@@ -98,8 +98,8 @@ author: "BrucePerlerMS"
   
 |**Error ID**|**Error Message**|**Action needed to fix the error**|  
 |-|-|-|  
-|ID4175|The issuer of the security token was not recognized by the IssuerNameRegistry.  To accept security tokens from this issuer, configure the IssuerNameRegistry to return a valid name for this issuer.|This error can be caused by copying a thumbprint from the MMC snap-in and pasting it into the *Web.config* file. Specifically, you can get an extra non-printable character in the text string when copying from the certificate properties window. This extra character causes the thumbprint match to fail.The procedure for correctly copying the thumbprint can be found at [Claims-Based Single Sign-On for the Web and Microsoft Azure](https://docs.microsoft.com/previous-versions/msp-n-p/ff359102%28v=pandp.10%29).|  
+|ID4175|The issuer of the security token was not recognized by the IssuerNameRegistry.  To accept security tokens from this issuer, configure the IssuerNameRegistry to return a valid name for this issuer.|This error can be caused by copying a thumbprint from the MMC snap-in and pasting it into the *Web.config* file. Specifically, you can get an extra non-printable character in the text string when copying from the certificate properties window. This extra character causes the thumbprint match to fail. The procedure for correctly copying the thumbprint can be found at [Claims-Based Single Sign-On for the Web and Microsoft Azure](https://docs.microsoft.com/previous-versions/msp-n-p/ff359102%28v=pandp.10%29).|  
   
 ## Related Items  
   
--   [Using Service Trace Viewer for Viewing Correlated Traces and Troubleshooting](../wcf/diagnostics/tracing/using-service-trace-viewer-for-viewing-correlated-traces-and-troubleshooting.md)
+- [Using Service Trace Viewer for Viewing Correlated Traces and Troubleshooting](../wcf/diagnostics/tracing/using-service-trace-viewer-for-viewing-correlated-traces-and-troubleshooting.md)

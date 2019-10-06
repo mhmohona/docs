@@ -25,13 +25,13 @@ The WCF client proxy can be generated manually by using the Service Model Metada
 ## ServiceModel Metadata Utility Tool
  The [ServiceModel Metadata Utility Tool (Svcutil.exe)](../../../docs/framework/wcf/servicemodel-metadata-utility-tool-svcutil-exe.md) is a command-line tool for generating code from metadata. The following use is an example of a basic Svcutil.exe command.
 
-```
+```console
 Svcutil.exe <service's Metadata Exchange (MEX) address or HTTP GET address>
 ```
 
  Alternatively, you can use Svcutil.exe with Web Services Description Language (WSDL) and XML Schema definition language (XSD) files on the file system.
 
-```
+```console
 Svcutil.exe <list of WSDL and XSD files on file system>
 ```
 
@@ -39,7 +39,7 @@ Svcutil.exe <list of WSDL and XSD files on file system>
 
  You can also use the tool to generate configuration files.
 
-```
+```console
 Svcutil.exe <file1 [,file2]>
 ```
 
@@ -172,11 +172,11 @@ Console.WriteLine("Add({0},{1}) = {2}", value1, value2, result)
 
 Many exceptions thrown by a WCF client are caused by an exception on the service. Some examples of this are:
 
--   <xref:System.Net.Sockets.SocketException>: An existing connection was forcibly closed by the remote host.
+- <xref:System.Net.Sockets.SocketException>: An existing connection was forcibly closed by the remote host.
 
--   <xref:System.ServiceModel.CommunicationException>: The underlying connection was closed unexpectedly.
+- <xref:System.ServiceModel.CommunicationException>: The underlying connection was closed unexpectedly.
 
--   <xref:System.ServiceModel.CommunicationObjectAbortedException>: The socket connection was aborted. This could be caused by an error processing your message, a receive time-out being exceeded by the remote host, or an underlying network resource issue.
+- <xref:System.ServiceModel.CommunicationObjectAbortedException>: The socket connection was aborted. This could be caused by an error processing your message, a receive time-out being exceeded by the remote host, or an underlying network resource issue.
 
 When these types of exceptions occur, the best way to solve the problem is to turn on tracing on the service side and determine what exception occurred there. For more information about tracing, see [Tracing](../../../docs/framework/wcf/diagnostics/tracing/index.md) and [Using Tracing to Troubleshoot Your Application](../../../docs/framework/wcf/diagnostics/tracing/using-tracing-to-troubleshoot-your-application.md).
 

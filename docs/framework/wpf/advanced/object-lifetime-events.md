@@ -51,7 +51,7 @@ This topic describes the specific [!INCLUDE[TLA2#tla_winclient](../../../../incl
  The mechanism by which the <xref:System.Windows.FrameworkElement.Loaded> event is raised is different than <xref:System.Windows.FrameworkElement.Initialized>. The <xref:System.Windows.FrameworkElement.Initialized> event is raised element by element, without a direct coordination by a completed element tree. By contrast, the <xref:System.Windows.FrameworkElement.Loaded> event is raised as a coordinated effort throughout the entire element tree (specifically, the logical tree). When all elements in the tree are in a state where they are considered loaded, the <xref:System.Windows.FrameworkElement.Loaded> event is first raised on the root element. The <xref:System.Windows.FrameworkElement.Loaded> event is then raised successively on each child element.  
   
 > [!NOTE]
->  This behavior might superficially resemble tunneling for a routed event. However, no information is carried from event to event. Each element always has the opportunity to handle its <xref:System.Windows.FrameworkElement.Loaded> event, and marking the event data as handled has no effect beyond that element.  
+> This behavior might superficially resemble tunneling for a routed event. However, no information is carried from event to event. Each element always has the opportunity to handle its <xref:System.Windows.FrameworkElement.Loaded> event, and marking the event data as handled has no effect beyond that element.  
   
 ### Unloaded  
  <xref:System.Windows.FrameworkElement.Unloaded> is raised last and is initiated by either the presentation source or the visual parent being removed. When <xref:System.Windows.FrameworkElement.Unloaded> is raised and handled, the element that is the event source parent (as determined by <xref:System.Windows.FrameworkElement.Parent%2A> property) or any given element upwards in the logical or visual trees may have already been unset, meaning that data binding, resource references, and styles may not be set to their normal or last known run-time value.  
@@ -60,11 +60,11 @@ This topic describes the specific [!INCLUDE[TLA2#tla_winclient](../../../../incl
 ## Lifetime Events Application Model Elements  
  Building on the common lifetime events for elements are the following application model elements: <xref:System.Windows.Application>, <xref:System.Windows.Window>, <xref:System.Windows.Controls.Page>, <xref:System.Windows.Navigation.NavigationWindow>, and <xref:System.Windows.Controls.Frame>. These extend the common lifetime events with additional events that are relevant to their specific purpose. These are discussed in detail in the following locations:  
   
--   <xref:System.Windows.Application>: [Application Management Overview](../app-development/application-management-overview.md).  
+- <xref:System.Windows.Application>: [Application Management Overview](../app-development/application-management-overview.md).  
   
--   <xref:System.Windows.Window>: [WPF Windows Overview](../app-development/wpf-windows-overview.md).  
+- <xref:System.Windows.Window>: [WPF Windows Overview](../app-development/wpf-windows-overview.md).  
   
--   <xref:System.Windows.Controls.Page>, <xref:System.Windows.Navigation.NavigationWindow>, and <xref:System.Windows.Controls.Frame>: [Navigation Overview](../app-development/navigation-overview.md).  
+- <xref:System.Windows.Controls.Page>, <xref:System.Windows.Navigation.NavigationWindow>, and <xref:System.Windows.Controls.Frame>: [Navigation Overview](../app-development/navigation-overview.md).  
   
 ## See also
 

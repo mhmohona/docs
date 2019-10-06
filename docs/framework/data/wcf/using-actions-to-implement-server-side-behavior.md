@@ -40,7 +40,7 @@ OData Actions provide a way to implement a behavior that acts upon a resource re
   
 3. Storing any results from Invoke() so they can be retrieved using GetResult()  
   
- The parameters may be passed as tokens. This is because it is possible to write a Data Service Provider that works with tokens that represent resources, if this is the case you may need to convert (marshal) these tokens into actual resources before dispatching to the actual action. After the parameter has been marshalled, it must be in an editable state so that any changes to the resource that occur when the action is invoked will be saved and written to disk.  
+ The parameters may be passed as tokens. This is because it is possible to write a Data Service Provider that works with tokens that represent resources, if this is the case you may need to convert (marshal) these tokens into actual resources before dispatching to the actual action. After the parameter has been marshaled, it must be in an editable state so that any changes to the resource that occur when the action is invoked will be saved and written to disk.  
   
  This interface requires two methods: Invoke and GetResult. Invoke invokes the delegate that implements the action’s behavior and GetResult returns the result of the action.  
   
@@ -51,7 +51,7 @@ OData Actions provide a way to implement a behavior that acts upon a resource re
   
  Movies(1) specifies the movie you wish to rate and Rate specifies the Rate action. The actual value of the rating will be in the body of the HTTP request as shown in the following example:  
   
-```  
+```http
 POST http://MovieServer/MoviesService.svc/Movies(1)/Rate HTTP/1.1   
 Content-Type: application/json   
 Content-Length: 20   
@@ -76,7 +76,7 @@ context.Execute(new Uri("http://MyServer/MoviesService.svc/Movies(1)/Rate"), "PO
   
 ## See also
 
-- [WCF Data Services 4.5](../../../../docs/framework/data/wcf/index.md)
-- [Defining WCF Data Services](../../../../docs/framework/data/wcf/defining-wcf-data-services.md)
-- [Developing and Deploying WCF Data Services](../../../../docs/framework/data/wcf/developing-and-deploying-wcf-data-services.md)
-- [Custom Data Service Providers](../../../../docs/framework/data/wcf/custom-data-service-providers-wcf-data-services.md)
+- [WCF Data Services 4.5](index.md)
+- [Defining WCF Data Services](defining-wcf-data-services.md)
+- [Developing and Deploying WCF Data Services](developing-and-deploying-wcf-data-services.md)
+- [Custom Data Service Providers](custom-data-service-providers-wcf-data-services.md)

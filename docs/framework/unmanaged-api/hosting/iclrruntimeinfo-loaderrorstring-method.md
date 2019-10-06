@@ -23,13 +23,13 @@ Translates an HRESULT value into an appropriate error message for the specified 
   
  This method supersedes the following functions:  
   
--   [LoadStringRC](../../../../docs/framework/unmanaged-api/hosting/loadstringrc-function.md)  
+- [LoadStringRC](../../../../docs/framework/unmanaged-api/hosting/loadstringrc-function.md)  
   
--   [LoadStringRCEx](../../../../docs/framework/unmanaged-api/hosting/loadstringrcex-function.md)  
+- [LoadStringRCEx](../../../../docs/framework/unmanaged-api/hosting/loadstringrcex-function.md)  
   
 ## Syntax  
   
-```  
+```cpp  
 HRESULT LoadErrorString(  
      [in] UINT iResourceID,  
      [out, size_is(*pcchBuffer)] LPWSTR pwzBuffer,  

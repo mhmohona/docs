@@ -22,7 +22,7 @@ Contains values that indicate what information about the common language runtime
   
 ## Syntax  
   
-```  
+```cpp  
 typedef enum {  
   
     RUNTIME_INFO_UPGRADE_VERSION             = 0x01,  
@@ -53,11 +53,11 @@ typedef enum {
 ## Remarks  
  The following platform architecture flags can be specified only one at a time and cannot be combined:  
   
--   RUNTIME_INFO_REQUEST_IA64  
+- RUNTIME_INFO_REQUEST_IA64  
   
--   RUNTIME_INFO_REQUEST_AMD64  
+- RUNTIME_INFO_REQUEST_AMD64  
   
--   RUNTIME_INFO_REQUEST_X86  
+- RUNTIME_INFO_REQUEST_X86  
   
 ## Requirements  
  **Platforms:** See [System Requirements](../../../../docs/framework/get-started/system-requirements.md).  

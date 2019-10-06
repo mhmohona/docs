@@ -23,7 +23,7 @@ Creates a definition for implementation of a method inherited from an interface,
   
 ## Syntax  
   
-```  
+```cpp  
 HRESULT DefineMethodImpl (   
     [in]  mdTypeDef         td,   
     [in]  mdToken           tkBody,   
@@ -36,10 +36,10 @@ HRESULT DefineMethodImpl (
  [in] The `mdTypedef` token of the implementing class.  
   
  `tkBody`  
- [in] The `mdMethodDef` or `mdMethodRef` token of the code body.  
+ [in] The `mdMethodDef` or `mdMemberRef` token of the code body.  
   
  `tkDecl`  
- [in] The `mdMethodDef` or `mdMethodRef` token of the interface method being implemented.  
+ [in] The `mdMethodDef` or `mdMemberRef` token of the interface method being implemented.  
   
 ## Requirements  
  **Platforms:** See [System Requirements](../../../../docs/framework/get-started/system-requirements.md).  

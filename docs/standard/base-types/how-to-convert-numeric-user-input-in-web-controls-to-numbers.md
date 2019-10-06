@@ -29,9 +29,9 @@ Because a Web page can be displayed anywhere in the world, users can input numer
   
 4. Call either the `TryParse` or the `Parse` method of the numeric type that you want to convert the user's input to. Use an overload of the `TryParse` or the `Parse` method with a `provider` parameter, and pass it either of the following:  
   
-    -   The <xref:System.Globalization.CultureInfo> object created in step 3.  
+    - The <xref:System.Globalization.CultureInfo> object created in step 3.  
   
-    -   The <xref:System.Globalization.NumberFormatInfo> object that is returned by the <xref:System.Globalization.CultureInfo.NumberFormat%2A> property of the <xref:System.Globalization.CultureInfo> object created in step 3.  
+    - The <xref:System.Globalization.NumberFormatInfo> object that is returned by the <xref:System.Globalization.CultureInfo.NumberFormat%2A> property of the <xref:System.Globalization.CultureInfo> object created in step 3.  
   
 5. If the conversion fails, repeat steps 2 through 4 for each remaining element in the string array returned by the <xref:System.Web.HttpRequest.UserLanguages%2A> property.  
   
@@ -52,15 +52,15 @@ Because a Web page can be displayed anywhere in the world, users can input numer
  Your code can call either the `Parse` or the `TryParse` method of the numeric type that the user's input will be converted to. Repeated calls to a parse method may be required for a single parsing operation. As a result, the `TryParse` method is better, because it returns `false` if a parse operation fails. In contrast, handling the repeated exceptions that may be thrown by the `Parse` method can be a very expensive proposition in a Web application.  
   
 ## Compiling the Code  
- To compile the code, copy it into an [!INCLUDE[vstecasp](../../../includes/vstecasp-md.md)] code-behind page so that it replaces all the existing code. The [!INCLUDE[vstecasp](../../../includes/vstecasp-md.md)] Web page should contain the following controls:  
+ To compile the code, copy it into an ASP.NET code-behind page so that it replaces all the existing code. The ASP.NET Web page should contain the following controls:  
   
--   A <xref:System.Web.UI.WebControls.Label> control, which is not referenced in code. Set its <xref:System.Web.UI.WebControls.TextBox.Text%2A> property to "Enter a Number:".  
+- A <xref:System.Web.UI.WebControls.Label> control, which is not referenced in code. Set its <xref:System.Web.UI.WebControls.TextBox.Text%2A> property to "Enter a Number:".  
   
--   A <xref:System.Web.UI.WebControls.TextBox> control named `NumericString`.  
+- A <xref:System.Web.UI.WebControls.TextBox> control named `NumericString`.  
   
--   A <xref:System.Web.UI.WebControls.Button> control named `OKButton`. Set its <xref:System.Web.UI.WebControls.Button.Text%2A> property to "OK".  
+- A <xref:System.Web.UI.WebControls.Button> control named `OKButton`. Set its <xref:System.Web.UI.WebControls.Button.Text%2A> property to "OK".  
   
- Change the name of the class from `NumericUserInput` to the name of the class that is defined by the `Inherits` attribute of the [!INCLUDE[vstecasp](../../../includes/vstecasp-md.md)] page's `Page` directive. Change the name of the `NumericInput` object reference to the name defined by the `id` attribute of the [!INCLUDE[vstecasp](../../../includes/vstecasp-md.md)] page's `form` tag.  
+ Change the name of the class from `NumericUserInput` to the name of the class that is defined by the `Inherits` attribute of the ASP.NET page's `Page` directive. Change the name of the `NumericInput` object reference to the name defined by the `id` attribute of the ASP.NET page's `form` tag.  
   
 ## .NET Framework Security  
  To prevent a user from injecting script into the HTML stream, user input should never be directly echoed back in the server response. Instead, it should be encoded by using the <xref:System.Web.HttpServerUtility.HtmlEncode%2A?displayProperty=nameWithType> method.  

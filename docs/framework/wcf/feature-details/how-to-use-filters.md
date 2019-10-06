@@ -6,13 +6,13 @@ ms.assetid: f2c7255f-c376-460e-aa20-14071f1666e5
 # How To: Use Filters
 This topic outlines the basic steps required to create a routing configuration that uses multiple filters. In this example, messages are routed to two implementations of a calculator service, regularCalc and roundingCalc. Both implementations support the same operations; however one service rounds all calculations to the nearest integer value before returning. A client application must be able to indicate whether to  use the rounding version of the service; if no service preference is expressed then the message is load balanced between the two services. The operations exposed by both services are:  
   
--   Add  
+- Add  
   
--   Subtract  
+- Subtract  
   
--   Multiply  
+- Multiply  
   
--   Divide  
+- Divide  
   
  Because both services implement the same operations, you cannot use the Action filter, because the action specified in the message will not be unique. Instead you must do additional work to ensure that the messages are routed to the appropriate endpoints.  
   
@@ -129,12 +129,12 @@ This topic outlines the basic steps required to create a routing configuration t
      If a message is received at an address that begins with `http://localhost/routingservice/router/rounding/` then this filter evaluates to **true**. Because the base address used by this configuration is `http://localhost/routingservice/router` and the address specified for the roundingEndpoint is "rounding/calculator", the full address used to communicate with this endpoint is `http://localhost/routingservice/router/rounding/calculator`, which matches this filter.  
   
     > [!NOTE]
-    >  The PrefixEndpointAddress filter does not evaluate the host name when performing a match, because a single host can be referred to by using a variety of host names that may all be valid ways of referring to the host from the client application. For example, all of the following may refer to the same host:  
+    > The PrefixEndpointAddress filter does not evaluate the host name when performing a match, because a single host can be referred to by using a variety of host names that may all be valid ways of referring to the host from the client application. For example, all of the following may refer to the same host:  
     >   
-    > -   localhost  
-    > -   127.0.0.1  
-    > -   `www.contoso.com`  
-    > -   ContosoWeb01  
+    > - localhost  
+    > - 127.0.0.1  
+    > - `www.contoso.com`  
+    > - ContosoWeb01  
   
 4. The final filter must support the routing of messages that arrive at the general endpoint without the custom header. For this scenario, the messages should alternate between the regularCalc and roundingCalc services. To support the "round robin" routing of these messages,  use a custom filter that allows one filter instance to match for each message processed.  The following defines two instances of a RoundRobinMessageFilter, which are grouped together to indicate that they should alternate between each other.  
   
@@ -157,7 +157,7 @@ This topic outlines the basic steps required to create a routing configuration t
 1. To associate the filters with specific client endpoints, you must place them within a filter table. This example scenario also uses filter priority settings, which is an optional setting that allows you to indicate the order in which filters are processed. If no filter priority is specified, all filters are evaluated simultaneously.  
   
     > [!NOTE]
-    >  While specifying a filter priority allows you to control the order in which filters are processed, it can adversely affect the performance of the Routing Service. When possible, construct filter logic so that the use of filter priorities is not required.  
+    > While specifying a filter priority allows you to control the order in which filters are processed, it can adversely affect the performance of the Routing Service. When possible, construct filter logic so that the use of filter priorities is not required.  
   
      The following defines the filter table and adds the "XPathFilter" defined earlier to the table with a priority of 2. This entry also specifies that if the `XPathFilter` matches the message, the message will be routed to the `roundingCalcEndpoint`.  
   

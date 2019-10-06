@@ -12,9 +12,9 @@ This topic provides a step-by-step introduction to building, debugging, and publ
 
 ## Prerequisites
 
-[Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) with the ".NET Core cross-platform development" workload installed. You can develop your app with either .NET Core 1.1 or .NET Core 2.0.
+[Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) with the ".NET Core cross-platform development" workload installed. You can develop your app with .NET Core 2.1 or later versions.
 
-For more information, see the [Prerequisites for .NET Core on Windows](../../core/windows-prerequisites.md) topic.
+For more information, see the [Prerequisites for .NET Core on Windows](../windows-prerequisites.md) topic.
 
 ## A simple Hello World application
 
@@ -55,7 +55,7 @@ Enhance your application to prompt the user for their name and display it along 
 
    [!code-csharp[GettingStarted#1](../../../samples/snippets/csharp/getting_started/with_visual_studio/helloworld.cs#1)]
 
-   This code replaces the existing <xref:System.Console.WriteLine%2A?displayProperty=nameWithType>, <xref:System.Console.Write%2A?displayProperty=nameWithType>, and <xref:System.Console.ReadKey%2A?displayProperty=nameWithType> statements.
+   This code replaces the contents of the `Main` method.
 
    ![Visual Studio Program c-sharp file with updated Main method](./media/with-visual-studio/visual-csharp-code-window.png)
 

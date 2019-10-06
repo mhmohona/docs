@@ -16,11 +16,11 @@ This sample demonstrates how to implement an RPC-based service and expose it in 
   
  The Web.config file configures the WCF service with 3 endpoints:  
   
--   The ~/service.svc/mex endpoint that exposes the service metadata for access by SOAP-based clients.  
+- The ~/service.svc/mex endpoint that exposes the service metadata for access by SOAP-based clients.  
   
--   The ~/service.svc/http endpoint that enables clients to access the service using the HTTP binding.  
+- The ~/service.svc/http endpoint that enables clients to access the service using the HTTP binding.  
   
--   The ~/service.svc/soap endpoint that allows the clients to access the service using the SOAP over HTTP binding.  
+- The ~/service.svc/soap endpoint that allows the clients to access the service using the SOAP over HTTP binding.  
   
  The HTTP endpoint is configured with a <`webHttp`> standard endpoint which has `helpEnabled` set to `true`. As a result, the service exposes an XHTML based help page at ~/service.svc/http/help that HTTP-based clients can use to access the service.  
   
@@ -51,10 +51,10 @@ This sample demonstrates how to implement an RPC-based service and expose it in 
 10. In the Windows Notification Area, right-click the ASP.NET development server icon and select **Stop** from the context menu.  
   
 > [!IMPORTANT]
->  The samples may already be installed on your machine. Check for the following (default) directory before continuing.  
+> The samples may already be installed on your machine. Check for the following (default) directory before continuing.  
 >   
->  `<InstallDrive>:\WF_WCF_Samples`  
+> `<InstallDrive>:\WF_WCF_Samples`  
 >   
->  If this directory does not exist, go to [Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF) Samples for .NET Framework 4](https://go.microsoft.com/fwlink/?LinkId=150780) to download all Windows Communication Foundation (WCF) and [!INCLUDE[wf1](../../../../includes/wf1-md.md)] samples. This sample is located in the following directory.  
+> If this directory does not exist, go to [Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF) Samples for .NET Framework 4](https://go.microsoft.com/fwlink/?LinkId=150780) to download all Windows Communication Foundation (WCF) and [!INCLUDE[wf1](../../../../includes/wf1-md.md)] samples. This sample is located in the following directory.  
 >   
->  `<InstallDrive>:\WF_WCF_Samples\WCF\Basic\Web\SoapAndHttpEndpoints`
+> `<InstallDrive>:\WF_WCF_Samples\WCF\Basic\Web\SoapAndHttpEndpoints`

@@ -15,9 +15,9 @@ Line numbers follow the same rules as other kinds of labels, and must contain a 
   
 ## To correct this error  
   
--   Place the number followed by a colon at the start of a line of code; for example:  
+- Place the number followed by a colon at the start of a line of code; for example:  
   
-    ```  
+    ```vb  
     400:    X += 1  
     ```  
   

@@ -12,11 +12,11 @@ helpviewer_keywords:
 ms.assetid: bc4a3d8e-76e2-423e-a5d1-159a023e82ec
 ---
 # x:Class Directive
-Configures XAML markup compilation to join partial classes between markup and code-behind. The code partial class is defined in a separate code file in a [!INCLUDE[TLA#tla_cls](../../../includes/tlasharptla-cls-md.md)] language, whereas the markup partial class is typically created by code generation during XAML compilation.  
+Configures XAML markup compilation to join partial classes between markup and code-behind. The code partial class is defined in a separate code file in a Common Language Specification (CLS) language, whereas the markup partial class is typically created by code generation during XAML compilation.  
   
 ## XAML Attribute Usage  
   
-```  
+```xaml  
 <object x:Class="namespace.classname"...>  
   ...  
 </object>  
@@ -26,8 +26,8 @@ Configures XAML markup compilation to join partial classes between markup and co
   
 |||  
 |-|-|  
-|`namespace`|Optional. Specifies a [!INCLUDE[TLA2#tla_clr](../../../includes/tla2sharptla-clr-md.md)] namespace that contains the partial class identified by `classname`. If `namespace` is specified, a dot (.) separates `namespace` and `classname`. See Remarks.|  
-|`classname`|Required. Specifies the [!INCLUDE[TLA2#tla_clr](../../../includes/tla2sharptla-clr-md.md)] name of the partial class that connects the loaded XAML and your code-behind for that XAML.|  
+|`namespace`|Optional. Specifies a CLR namespace that contains the partial class identified by `classname`. If `namespace` is specified, a dot (.) separates `namespace` and `classname`. See Remarks.|  
+|`classname`|Required. Specifies the CLR name of the partial class that connects the loaded XAML and your code-behind for that XAML.|  
   
 ## Dependencies  
  `x:Class` can only be specified on the root element of a XAML production. `x:Class` is invalid on any object that has a parent in the XAML production. For more information, see [\[MS-XAML\] Section 4.3.1.6](https://go.microsoft.com/fwlink/?LinkId=114525).  
@@ -46,7 +46,7 @@ Configures XAML markup compilation to join partial classes between markup and co
  At a certain level of architecture, the meaning of `x:Class` is undefined in .NET Framework XAML Services. This is because .NET Framework XAML Services does not specify the programming model by which XAML markup and backing code are connected. Additional uses of the `x:Class` directive might be implemented by specific frameworks that use programming models or application models to define how to connect XAML markup and CLR-based code-behind. Each framework can have its own build actions that enable some of the behavior or specific components that must be included in the build environment. Within a framework, build actions can also vary depending on the specific CLR language that is used for the code-behind.  
   
 ## x:Class in the WPF Programming Model  
- In WPF applications and the WPF application model, `x:Class` can be declared as an attribute for any element that is the root of a XAML file and is being compiled (where the XAML is included in a WPF application project with `Page` build action), or for the <xref:System.Windows.Application> root in the application definition of a compiled WPF application. Declaring `x:Class` on an element other than a page root or application root, or on a WPF XAML file that is not compiled, causes a compile-time error under the [!INCLUDE[net_v30_short](../../../includes/net-v30-short-md.md)] and [!INCLUDE[net_v35_short](../../../includes/net-v35-short-md.md)] WPF XAML compiler. For information about other aspects of `x:Class` handling in WPF, see [Code-Behind and XAML in WPF](../wpf/advanced/code-behind-and-xaml-in-wpf.md).  
+ In WPF applications and the WPF application model, `x:Class` can be declared as an attribute for any element that is the root of a XAML file and is being compiled (where the XAML is included in a WPF application project with `Page` build action), or for the <xref:System.Windows.Application> root in the application definition of a compiled WPF application. Declaring `x:Class` on an element other than a page root or application root, or on a WPF XAML file that is not compiled, causes a compile-time error under the .NET Framework 3.0 and .NET Framework 3.5 WPF XAML compiler. For information about other aspects of `x:Class` handling in WPF, see [Code-Behind and XAML in WPF](../wpf/advanced/code-behind-and-xaml-in-wpf.md).  
   
 ## x:Class for Windows Workflow Foundation  
  For Windows Workflow Foundation, `x:Class` names the class of a custom activity composed entirely in XAML, or names the partial class of the XAML page for  an activity designer with code-behind.  

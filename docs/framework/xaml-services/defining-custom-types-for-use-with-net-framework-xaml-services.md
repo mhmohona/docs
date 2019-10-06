@@ -11,24 +11,24 @@ When you define custom types that are business objects or are types that do not 
 ## Constructor Patterns and Type Definitions for XAML  
  To be instantiated as an object element in XAML, a custom class must meet the following requirements:  
   
--   The custom class must be public and must expose a default (parameterless) public constructor. (See following section for notes regarding structures.)  
+- The custom class must be public and must expose a default (parameterless) public constructor. (See following section for notes regarding structures.)  
   
--   The custom class must not be a nested class. The extra "dot" in the full-name path makes the class-namespace division ambiguous, and interferes with other XAML features such as attached properties.  
+- The custom class must not be a nested class. The extra "dot" in the full-name path makes the class-namespace division ambiguous, and interferes with other XAML features such as attached properties.  
   
  If an object can be instantiated as an object element, the created object can fill the property element form of any properties that take the object as their underlying type.  
   
  You can still provide object values for types that do not meet these criteria, if you enable a value converter. For more information, see [Type Converters and Markup Extensions for XAML](type-converters-and-markup-extensions-for-xaml.md).  
   
 ### Structures  
- Structures are always able to be constructed in XAML, by CLR definition. This is because a CLR compiler implicitly creates a default constructor for a structure. This constructor initializes all property values to their defaults.  
+ Structures are always able to be constructed in XAML, by CLR definition. This is because a CLR compiler implicitly creates a parameterless constructor for a structure. This constructor initializes all property values to their defaults.  
   
- In some cases, the default construction behavior for a structure is not desirable. This might be because the structure is intended to fill values and function conceptually as a union. As a union, the contained values might have mutually exclusive interpretations, and therefore, none of its properties are settable. An example of such a structure in the WPF vocabulary is <xref:System.Windows.GridLength>. Such structures should implement a type converter so that the values can be expressed in attribute form, by using string conventions that create the different interpretations or modes of the structure values. The structure should also expose similar behavior for code construction through a non-default constructor.  
+ In some cases, the default construction behavior for a structure is not desirable. This might be because the structure is intended to fill values and function conceptually as a union. As a union, the contained values might have mutually exclusive interpretations, and therefore, none of its properties are settable. An example of such a structure in the WPF vocabulary is <xref:System.Windows.GridLength>. Such structures should implement a type converter so that the values can be expressed in attribute form, by using string conventions that create the different interpretations or modes of the structure values. The structure should also expose similar behavior for code construction through a non-parameterless constructor.  
   
 ### Interfaces  
  Interfaces can be used as underlying types of members. The XAML type system checks the assignable list and expects that the object that is provided as the value can be assigned to the interface. There is no concept of how the interface must be presented as a XAML type as long as a relevant assignable type supports the XAML construction requirements.  
   
 ### Factory Methods  
- Factory methods are a XAML 2009 feature. They modify the XAML principle that objects must have default constructors. Factory methods are not documented in this topic. See [x:FactoryMethod Directive](x-factorymethod-directive.md).  
+ Factory methods are a XAML 2009 feature. They modify the XAML principle that objects must have parameterless constructors. Factory methods are not documented in this topic. See [x:FactoryMethod Directive](x-factorymethod-directive.md).  
   
 ## Enumerations  
  Enumerations have XAML native type conversion behavior. Enumeration constant names specified in XAML are resolved against the underlying enumeration type, and return the enumeration value to a XAML object writer.  
@@ -66,9 +66,9 @@ When you define custom types that are business objects or are types that do not 
   
  `public static object Get` *PropertyName* `(object`  `target` `)`  
   
--   The `target` object can be specified as a more specific type in your implementation. You can use this to scope the usage of your attachable member; usages outside your intended scope will throw invalid cast exceptions that are then surfaced by a XAML parse error. The parameter name `target` is not a requirement, but is named `target` by convention in most implementations.  
+- The `target` object can be specified as a more specific type in your implementation. You can use this to scope the usage of your attachable member; usages outside your intended scope will throw invalid cast exceptions that are then surfaced by a XAML parse error. The parameter name `target` is not a requirement, but is named `target` by convention in most implementations.  
   
--   The return value can be specified as a more specific type in your implementation.  
+- The return value can be specified as a more specific type in your implementation.  
   
  To support a <xref:System.ComponentModel.TypeConverter> enabled text syntax for attribute usage of the attachable member, apply <xref:System.ComponentModel.TypeConverterAttribute> to the `Get`*PropertyName* accessor. Applying to the `get` instead of the `set` may seem nonintuitive; however, this convention can support the concept of read-only attachable members that are serializable, which is useful in designer scenarios.  
   
@@ -77,9 +77,9 @@ When you define custom types that are business objects or are types that do not 
   
  `public static void Set` *PropertyName* `(object`  `target` `, object`  `value` `)`  
   
--   The `target` object can be specified as a more specific type in your implementation, with same logic and consequences as described in the previous section.  
+- The `target` object can be specified as a more specific type in your implementation, with same logic and consequences as described in the previous section.  
   
--   The `value` object can be specified as a more specific type in your implementation.  
+- The `value` object can be specified as a more specific type in your implementation.  
   
  Remember that the value for this method is the input coming from the XAML usage, typically in attribute form. From attribute form there must be value converter support for a text syntax, and you attribute on the `Get`*PropertyName* accessor.  
   

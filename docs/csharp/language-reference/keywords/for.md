@@ -45,9 +45,9 @@ The statements in the *initializer* section are executed only once, before enter
 
   - prefix or postfix [decrement](../operators/arithmetic-operators.md#decrement-operator---) expression, such as `--i` or `i--`
 
-  - creation of an object by using [new](new-operator.md) keyword
+  - creation of an object by using the [new](../operators/new-operator.md) operator
 
-  - [await](await.md) expression
+  - [await](../operators/await.md) expression
 
 The *initializer* section in the example above declares and initializes the local loop variable `i`:
 
@@ -77,9 +77,9 @@ The *iterator* section defines what happens after each iteration of the body of 
 
 - prefix or postfix [decrement](../operators/arithmetic-operators.md#decrement-operator---) expression, such as `--i` or `i--`
 
-- creation of an object by using [new](new-operator.md) keyword
+- creation of an object by using the [new](../operators/new-operator.md) operator
 
-- [await](await.md) expression
+- [await](../operators/await.md) expression
 
 The *iterator* section in the example above increments the local loop variable:
 
@@ -106,5 +106,4 @@ For more information, see [The for statement](~/_csharplang/spec/statements.md#t
 - [C# Reference](../index.md)
 - [C# Programming Guide](../../programming-guide/index.md)
 - [C# Keywords](index.md)
-- [Iteration Statements](iteration-statements.md)
 - [foreach, in](foreach-in.md)

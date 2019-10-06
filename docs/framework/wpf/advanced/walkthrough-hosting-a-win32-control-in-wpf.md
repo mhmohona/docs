@@ -21,7 +21,7 @@ Windows Presentation Foundation (WPF) provides a rich environment for creating a
  Because the sample that accompanies this topic is implemented in C#, it makes use of Platform Invocation Services (PInvoke) to access the Windows API. Some familiarity with PInvoke is helpful but not essential.  
   
 > [!NOTE]
->  This topic includes a number of code examples from the associated sample. However, for readability, it does not include the complete sample code. You can obtain or view complete code from [Hosting a Win32 ListBox Control in WPF Sample](https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control).  
+> This topic includes a number of code examples from the associated sample. However, for readability, it does not include the complete sample code. You can obtain or view complete code from [Hosting a Win32 ListBox Control in WPF Sample](https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control).  
   
 <a name="basic_procedure"></a>   
 ## The Basic Procedure  
@@ -41,9 +41,9 @@ Windows Presentation Foundation (WPF) provides a rich environment for creating a
   
 6. Handle selected messages sent to the host window, such as notifications from child controls. There are two ways to do this.  
   
-    -   If you prefer to handle messages in your hosting class, override the <xref:System.Windows.Interop.HwndHost.WndProc%2A> method of the <xref:System.Windows.Interop.HwndHost> class.  
+    - If you prefer to handle messages in your hosting class, override the <xref:System.Windows.Interop.HwndHost.WndProc%2A> method of the <xref:System.Windows.Interop.HwndHost> class.  
   
-    -   If you prefer to have the WPF handle the messages, handle the <xref:System.Windows.Interop.HwndHost> class <xref:System.Windows.Interop.HwndHost.MessageHook> event in your code-behind. This event occurs for every message that is received by the hosted window. If you choose this option, you must still override <xref:System.Windows.Interop.HwndHost.WndProc%2A>, but you only need a minimal implementation.  
+    - If you prefer to have the WPF handle the messages, handle the <xref:System.Windows.Interop.HwndHost> class <xref:System.Windows.Interop.HwndHost.MessageHook> event in your code-behind. This event occurs for every message that is received by the hosted window. If you choose this option, you must still override <xref:System.Windows.Interop.HwndHost.WndProc%2A>, but you only need a minimal implementation.  
   
 7. Override the <xref:System.Windows.Interop.HwndHost.DestroyWindowCore%2A> and <xref:System.Windows.Interop.HwndHost.WndProc%2A> methods of <xref:System.Windows.Interop.HwndHost>. You must override these methods to satisfy the <xref:System.Windows.Interop.HwndHost> contract, but you may only need to provide a minimal implementation.  
   
@@ -111,7 +111,7 @@ Windows Presentation Foundation (WPF) provides a rich environment for creating a
  The sample attaches a handler to the <xref:System.Windows.Interop.HwndHost.MessageHook> event of the `ControlHost` to receive messages from the control. This event is raised for every message sent to the hosted window. In this case, these are the messages sent to window that wraps the actual ListBox control, including notifications from the control. The sample calls SendMessage to obtain information from the control and modify its contents. The details of how the page communicates with the control are discussed in the next section.  
   
 > [!NOTE]
->  Notice that there are two PInvoke declarations for SendMessage. This is necessary because one uses the `wParam` parameter to pass a string and the other uses it to pass an integer. You need a separate declaration for each signature to ensure that the data is marshaled correctly.  
+> Notice that there are two PInvoke declarations for SendMessage. This is necessary because one uses the `wParam` parameter to pass a string and the other uses it to pass an integer. You need a separate declaration for each signature to ensure that the data is marshaled correctly.  
   
  [!code-csharp[WPFHostingWin32Control#HostWindowClass](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/Page1.xaml.cs#hostwindowclass)]
  [!code-vb[WPFHostingWin32Control#HostWindowClass](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/Page1.xaml.vb#hostwindowclass)]  
@@ -123,13 +123,13 @@ Windows Presentation Foundation (WPF) provides a rich environment for creating a
 ## Implement Communication Between the Control and the Page  
  You manipulate the control by sending it Windows messages. The control notifies you when the user interacts with it by sending notifications to its host window. The [Hosting a Win32 ListBox Control in WPF](https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control) sample includes a UI that provides several examples of how this works:  
   
--   Append an item to the list.  
+- Append an item to the list.  
   
--   Delete the selected item from the list  
+- Delete the selected item from the list  
   
--   Display the text of the currently selected item.  
+- Display the text of the currently selected item.  
   
--   Display the number of items in the list.  
+- Display the number of items in the list.  
   
  The user can also select an item in the list box by clicking on it, just as they would for a conventional Win32 application. The displayed data is updated each time the user changes the state of the list box by selecting, adding, or appending an item.  
   

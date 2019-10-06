@@ -13,7 +13,7 @@ A `For Each` loop uses an array as its *element* iteration variable but initiali
   
  The following statements show how this error can be generated.  
   
-```  
+```vb  
 Dim arrayList As New List(Of Integer())  
 For Each listElement() As Integer In arrayList  
 For Each listElement(1) As Integer In arrayList  
@@ -25,7 +25,7 @@ For Each listElement(1) As Integer In arrayList
   
 ## To correct this error  
   
--   Remove the initialization from the declaration of the *element* iteration variable.  
+- Remove the initialization from the declaration of the *element* iteration variable.  
   
 ## See also
 

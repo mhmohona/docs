@@ -18,27 +18,27 @@ This topic provides an overview of the [!INCLUDE[TLA2#tla_winclient](../../../..
   
  The <xref:System.Windows.Media.Visual> object is a core [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] object, whose primary role is to provide rendering support. User interface controls, such as <xref:System.Windows.Controls.Button> and <xref:System.Windows.Controls.TextBox>, derive from the <xref:System.Windows.Media.Visual> class, and use it for persisting their rendering data. The <xref:System.Windows.Media.Visual> object provides support for:  
   
--   Output display: Rendering the persisted, serialized drawing content of a visual.  
+- Output display: Rendering the persisted, serialized drawing content of a visual.  
   
--   Transformations: Performing transformations on a visual.  
+- Transformations: Performing transformations on a visual.  
   
--   Clipping: Providing clipping region support for a visual.  
+- Clipping: Providing clipping region support for a visual.  
   
--   Hit testing: Determining whether a coordinate or geometry is contained within the bounds of a visual.  
+- Hit testing: Determining whether a coordinate or geometry is contained within the bounds of a visual.  
   
--   Bounding box calculations: Determining the bounding rectangle of a visual.  
+- Bounding box calculations: Determining the bounding rectangle of a visual.  
   
  However, the <xref:System.Windows.Media.Visual> object does not include support for non-rendering features, such as:  
   
--   Event handling  
+- Event handling  
   
--   Layout  
+- Layout  
   
--   Styles  
+- Styles  
   
--   Data binding  
+- Data binding  
   
--   Globalization  
+- Globalization  
   
  <xref:System.Windows.Media.Visual> is exposed as a public abstract class from which child classes must be derived. The following illustration shows the hierarchy of the visual objects that are exposed in [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].  
   
@@ -86,7 +86,7 @@ Order of DrawingGroup operations
  In addition to their other uses, <xref:System.Windows.Media.Drawing> objects also provide an object model for enumerating the contents of a <xref:System.Windows.Media.Visual>.  
   
 > [!NOTE]
->  When you are enumerating the contents of the visual, you are retrieving <xref:System.Windows.Media.Drawing> objects, and not the underlying representation of the render data as a vector graphics instruction list.  
+> When you are enumerating the contents of the visual, you are retrieving <xref:System.Windows.Media.Drawing> objects, and not the underlying representation of the render data as a vector graphics instruction list.  
   
  The following example uses the <xref:System.Windows.Media.VisualTreeHelper.GetDrawing%2A> method to retrieve the <xref:System.Windows.Media.DrawingGroup> value of a <xref:System.Windows.Media.Visual> and enumerate it.  
   
@@ -121,13 +121,13 @@ Order of DrawingGroup operations
   
  There are a number of points to note about the hierarchy of visual objects and vector graphics instruction lists:  
   
--   The ordering in the hierarchy represents the rendering order of the drawing information. From the root visual element, child elements are traversed, left to right, top to bottom. If an element has visual child elements, they are traversed before the element’s siblings.  
+- The ordering in the hierarchy represents the rendering order of the drawing information. From the root visual element, child elements are traversed, left to right, top to bottom. If an element has visual child elements, they are traversed before the element’s siblings.  
   
--   Non-leaf node elements in the hierarchy, such as <xref:System.Windows.Controls.ContentPresenter>, are used to contain child elements—they do not contain instruction lists.  
+- Non-leaf node elements in the hierarchy, such as <xref:System.Windows.Controls.ContentPresenter>, are used to contain child elements—they do not contain instruction lists.  
   
--   If a visual element contains both a vector graphics instruction list and visual children, the instruction list in the parent visual element is rendered before drawings in any of the visual child objects.  
+- If a visual element contains both a vector graphics instruction list and visual children, the instruction list in the parent visual element is rendered before drawings in any of the visual child objects.  
   
--   The items in the vector graphics instruction list are rendered left to right.  
+- The items in the vector graphics instruction list are rendered left to right.  
   
 <a name="visual_tree"></a>   
 ## Visual Tree  
@@ -208,7 +208,7 @@ Visual Profiler display output
 ### About Resolution and Device-Independent Graphics  
  There are two system factors that determine the size of text and graphics on your screen: resolution and DPI. Resolution describes the number of pixels that appear on the screen. As the resolution gets higher, pixels get smaller, causing graphics and text to appear smaller. A graphic displayed on a monitor set to 1024 x 768 will appear much smaller when the resolution is changed to 1600 x 1200.  
   
- The other system setting, DPI, describes the size of a screen inch in pixels. Most [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] systems have a DPI of 96, which means a screen inch is 96 pixels. Increasing the DPI setting makes the screen inch larger; decreasing the DPI makes the screen inch smaller. This means that a screen inch isn't the same size as a real-world inch; on most systems, it's probably not. As you increase the DPI, DPI-aware graphics and text become larger because you've increased the size of the screen inch. Increasing the DPI can make text easier to read, especially at high resolutions.  
+ The other system setting, DPI, describes the size of a screen inch in pixels. Most Windows systems have a DPI of 96, which means a screen inch is 96 pixels. Increasing the DPI setting makes the screen inch larger; decreasing the DPI makes the screen inch smaller. This means that a screen inch isn't the same size as a real-world inch; on most systems, it's probably not. As you increase the DPI, DPI-aware graphics and text become larger because you've increased the size of the screen inch. Increasing the DPI can make text easier to read, especially at high resolutions.  
   
  Not all applications are DPI-aware: some use hardware pixels as the primary unit of measurement; changing the system DPI has no effect on these applications. Many other applications use DPI-aware units to describe font sizes, but use pixels to describe everything else. Making the DPI too small or too large can cause layout problems for these applications, because the applications' text scales with the system's DPI setting, but the applications' UI does not. This problem has been eliminated for applications developed using [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].  
   

@@ -21,11 +21,11 @@ ms.author: "ronpet"
 # CorLaunchApplication Function
 Starts the application at the specified network path, using the specified manifests and other application data.  
   
- This function has been deprecated in the [!INCLUDE[net_v40_long](../../../../includes/net-v40-long-md.md)].  
+ This function has been deprecated in the .NET Framework 4.  
   
 ## Syntax  
   
-```  
+```cpp  
 HRESULT CorLaunchApplication (  
     [in]  HOST_TYPE                dwClickOnceHost,  
     [in]  LPCWSTR                  pwzAppFullName,  

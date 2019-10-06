@@ -23,8 +23,6 @@ The following C# code example illustrates how to use platform invoke services to
   
 ## Compiling the Code  
   
-### To compile the code  
-  
 1. Create a new C# Windows Application project in Visual Studio and name it **WinSound**.  
   
 2. Copy the code above, and paste it over the contents of the `Form1.cs` file.  
@@ -35,12 +33,9 @@ The following C# code example illustrates how to use platform invoke services to
   
 4. Compile and run the code.  
   
-## .NET Framework Security  
- For more information, see [Security in .NET](../../../standard/security/index.md).  
-  
 ## See also
 
-- [C# Programming Guide](../../../csharp/programming-guide/index.md)
-- [Interoperability Overview](../../../csharp/programming-guide/interop/interoperability-overview.md)
+- [C# Programming Guide](../index.md)
+- [Interoperability Overview](./interoperability-overview.md)
 - [A Closer Look at Platform Invoke](../../../framework/interop/consuming-unmanaged-dll-functions.md#a-closer-look-at-platform-invoke)
 - [Marshaling Data with Platform Invoke](../../../framework/interop/marshaling-data-with-platform-invoke.md)

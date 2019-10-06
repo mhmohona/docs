@@ -40,13 +40,13 @@ A basic reading node loop for examining a XAML node stream consists of the follo
 
 - Based on which <xref:System.Xaml.XamlNodeType> is reported as the current node or current record, call one of the following to obtain information about the node contents:
 
-    - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.StartMember> or <xref:System.Xaml.XamlNodeType.EndMember>, call <xref:System.Xaml.XamlXmlReader.Member%2A> to obtain <xref:System.Xaml.XamlMember> information about a member. Note that the member might be a <xref:System.Xaml.XamlDirective>, and thus might not necessarily be a conventional type-defined member of the preceding object. For example, `x:Name` applied to an object appears as a XAML member where <xref:System.Xaml.XamlMember.IsDirective%2A> is true and the <xref:System.Xaml.XamlMember.Name%2A> of the member is `Name`, with other properties indicating that this directive is under the XAML language XAML namespace.
+  - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.StartMember> or <xref:System.Xaml.XamlNodeType.EndMember>, call <xref:System.Xaml.XamlXmlReader.Member%2A> to obtain <xref:System.Xaml.XamlMember> information about a member. Note that the member might be a <xref:System.Xaml.XamlDirective>, and thus might not necessarily be a conventional type-defined member of the preceding object. For example, `x:Name` applied to an object appears as a XAML member where <xref:System.Xaml.XamlMember.IsDirective%2A> is true and the <xref:System.Xaml.XamlMember.Name%2A> of the member is `Name`, with other properties indicating that this directive is under the XAML language XAML namespace.
 
-    - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.StartObject> or <xref:System.Xaml.XamlNodeType.EndObject>, call <xref:System.Xaml.XamlXmlReader.Type%2A> to obtain <xref:System.Xaml.XamlType> information about an object.
+  - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.StartObject> or <xref:System.Xaml.XamlNodeType.EndObject>, call <xref:System.Xaml.XamlXmlReader.Type%2A> to obtain <xref:System.Xaml.XamlType> information about an object.
 
-    - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.Value>, call <xref:System.Xaml.XamlXmlReader.Value%2A>. A node is a value only if it is the simplest expression of a value for a member, or the initialization text for an object (however, you should be aware of type conversion behavior as documented in an upcoming section of this topic).
+  - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.Value>, call <xref:System.Xaml.XamlXmlReader.Value%2A>. A node is a value only if it is the simplest expression of a value for a member, or the initialization text for an object (however, you should be aware of type conversion behavior as documented in an upcoming section of this topic).
 
-    - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.NamespaceDeclaration>, call <xref:System.Xaml.XamlXmlReader.Namespace%2A> to obtain namespace information for a namespace node.
+  - For a <xref:System.Xaml.XamlXmlReader.NodeType%2A> of <xref:System.Xaml.XamlNodeType.NamespaceDeclaration>, call <xref:System.Xaml.XamlXmlReader.Namespace%2A> to obtain namespace information for a namespace node.
 
 - Call <xref:System.Xaml.XamlXmlReader.Read%2A> to advance the XAML reader to the next node in the XAML node stream, and repeat the steps again.
 
@@ -80,9 +80,6 @@ This basic example of a load path XAML node loop transparently connects the XAML
 ### Accessing XAML Beyond the Node Loop Concept
 
 There are potentially other ways to work with a XAML representation other than as a XAML node loop. For example, there could exist a XAML reader that can read an indexed node, or in particular accesses nodes directly by `x:Name`, by `x:Uid`, or through other identifiers. .NET Framework XAML Services does not provide a full implementation, but provides a suggested pattern through services and support types. For more information, see <xref:System.Xaml.IXamlIndexingReader> and <xref:System.Xaml.XamlNodeList>.
-
-> [!TIP]
-> Microsoft also produces an out-of-band release known as the Microsoft XAML Toolkit. This out-of-band release is still in its pre-release stages. However, if you are willing to work with pre-release components, the Microsoft XAML Toolkit provides some interesting resources for XAML tooling and static analysis of XAML. The Microsoft XAML Toolkit includes a XAML DOM API, support for FxCop analysis, and a XAML schema context for Silverlight. For more information, see [Microsoft XAML Toolkit](https://code.msdn.microsoft.com/XAML).
 
 <a name="working_with_the_current_node"></a>
 
@@ -135,15 +132,15 @@ In the XAML node stream, you can rely on the following behavior:
 
 - A `Value` node represents the value itself; there is no "EndValue". It can be followed only by an `EndMember`.
 
-    - XAML initialization text of the object as might be used by construction does not result in an Object-Value structure. Instead, a dedicated member node for a member named `_Initialization` is created. and that member node contains the initialization value string. If it exists, `_Initialization` is always the first `StartMember`. `_Initialization` may be qualified in some XAML services representations with the XAML language XAML namescope, to clarify that `_Initialization` is not a defined property in backing types.
+  - XAML initialization text of the object as might be used by construction does not result in an Object-Value structure. Instead, a dedicated member node for a member named `_Initialization` is created. and that member node contains the initialization value string. If it exists, `_Initialization` is always the first `StartMember`. `_Initialization` may be qualified in some XAML services representations with the XAML language XAML namescope, to clarify that `_Initialization` is not a defined property in backing types.
 
-    - A Member-Value combination represents an attribute setting of the value. There might eventually be a value converter involved in processing this value, and the value is a plain string. However, that is not evaluated until a XAML object writer processes this node stream. The XAML object writer possesses the necessary XAML schema context, type system mapping, and other support needed for value conversions.
+  - A Member-Value combination represents an attribute setting of the value. There might eventually be a value converter involved in processing this value, and the value is a plain string. However, that is not evaluated until a XAML object writer processes this node stream. The XAML object writer possesses the necessary XAML schema context, type system mapping, and other support needed for value conversions.
 
 - An `EndMember` node can be followed by a `StartMember` node for a subsequent member, or by an `EndObject` node for the member owner.
 
 - An `EndObject` node can be followed by an `EndMember` node. It can also be followed by a `StartObject` node for cases where the objects are peers in a collection's items. Or it can be followed by a `Namespace` node, which applies to an upcoming `StartObject`.
 
-    - For the unique case of closing the entire node stream, the `EndObject` of the root is not followed by anything; the reader is now end-of-file, and <xref:System.Xaml.XamlReader.Read%2A> returns `false`.
+  - For the unique case of closing the entire node stream, the `EndObject` of the root is not followed by anything; the reader is now end-of-file, and <xref:System.Xaml.XamlReader.Read%2A> returns `false`.
 
 <a name="value_converters_and_the_xaml_node_stream"></a>
 
@@ -227,7 +224,7 @@ Certain directives are intended specifically to provide more information for the
 
 ### XamlObjectWriter Behavior and Node Order
 
-`StartObject` to a <xref:System.Xaml.XamlObjectWriter> is not necessarily a signal to the XAML object writer to immediately construct the object instance. XAML includes several language features that make it possible to initialize an object with additional input, and to not rely entirely on invoking a default constructor to produce the initial object, and only then setting properties. These features include: <xref:System.Windows.Markup.XamlDeferLoadAttribute>; initialization text; [x:TypeArguments](x-typearguments-directive.md); positional parameters of a markup extension; factory methods and associated [x:Arguments](x-arguments-directive.md) nodes (XAML 2009). Each of these cases delay the actual object construction, and because the node stream is reordered, the XAML object writer can rely on a behavior of actually constructing the instance whenever a start member is encountered that is not specifically a construction directive for that object type.
+`StartObject` to a <xref:System.Xaml.XamlObjectWriter> is not necessarily a signal to the XAML object writer to immediately construct the object instance. XAML includes several language features that make it possible to initialize an object with additional input, and to not rely entirely on invoking a parameterless constructor to produce the initial object, and only then setting properties. These features include: <xref:System.Windows.Markup.XamlDeferLoadAttribute>; initialization text; [x:TypeArguments](x-typearguments-directive.md); positional parameters of a markup extension; factory methods and associated [x:Arguments](x-arguments-directive.md) nodes (XAML 2009). Each of these cases delay the actual object construction, and because the node stream is reordered, the XAML object writer can rely on a behavior of actually constructing the instance whenever a start member is encountered that is not specifically a construction directive for that object type.
 
 ### GetObject
 

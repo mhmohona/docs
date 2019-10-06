@@ -8,7 +8,7 @@ author: "rpetrusha"
 ms.author: "ronpet"
 ---
 # ICorDebugProcess8::EnableExceptionCallbacksOutsideOfMyCode Method
-[Supported in the [!INCLUDE[net_v46](../../../../includes/net-v46-md.md)] and later versions]  
+[Supported in the .NET Framework 4.6 and later versions]  
   
  Enables or disables certain types of [ICorDebugManagedCallback2](../../../../docs/framework/unmanaged-api/debugging/icordebugmanagedcallback2-interface.md) exception callbacks.  
   
@@ -27,9 +27,9 @@ HRESULT EnableExceptionCallbacksOutsideOfMyCode(
 ## Remarks  
  If the value of `enableExceptionsOutsideOfJMC` is `false`:  
   
--   A DEBUG_EXCEPTION_FIRST_CHANCE exception will not result in a callback to the debugger.  
+- A DEBUG_EXCEPTION_FIRST_CHANCE exception will not result in a callback to the debugger.  
   
--   A DEBUG_EXCEPTION_CATCH_HANDLER_FOUND exception will not result in a callback to the debugger if the exception never escapes into user code (that is, the path from an exception origin to an exception handler has no methods marked as JustMyCode, or JMC).  
+- A DEBUG_EXCEPTION_CATCH_HANDLER_FOUND exception will not result in a callback to the debugger if the exception never escapes into user code (that is, the path from an exception origin to an exception handler has no methods marked as JustMyCode, or JMC).  
   
  The default value of `enableExceptionsOutsideOfJMC` is `true`.  
   

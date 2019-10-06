@@ -10,7 +10,7 @@ This example shows how to perform aggregate computations such as Sum, Average, M
   
 1. Copy the following lines into a file that is named scores.csv and save it in your project folder. Assume that the first column represents a student ID, and subsequent columns represent scores from four exams.  
   
-    ```  
+    ```csv  
     111, 97, 92, 81, 60  
     112, 75, 84, 91, 39  
     113, 88, 94, 65, 91  
@@ -137,7 +137,7 @@ End Class
  The query works by using the <xref:System.String.Split%2A> method to convert each line of text into an array. Each array element represents a column. Finally, the text in each column is converted to its numeric representation. If your file is a tab-separated file, just update the argument in the `Split` method to `\t`.  
   
 ## Compiling the Code  
- Create a project that targets the .NET Framework version 3.5 or higher with a reference to System.Core.dll and a `Imports` statement for the System.Linq namespace.  
+Create a VB.NET console application project, with an `Imports` statement for the System.Linq namespace.
   
 ## See also
 

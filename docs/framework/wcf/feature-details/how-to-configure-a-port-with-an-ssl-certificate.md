@@ -21,15 +21,15 @@ When creating a self-hosted Windows Communication Foundation (WCF) service with 
   
  This topic describes how to accomplish several procedures:  
   
--   Determining a computer's current port configuration.  
+- Determining a computer's current port configuration.  
   
--   Getting a certificate's thumbprint (necessary for the following two procedures).  
+- Getting a certificate's thumbprint (necessary for the following two procedures).  
   
--   Binding an SSL certificate to a port configuration.  
+- Binding an SSL certificate to a port configuration.  
   
--   Binding an SSL certificate to a port configuration and supporting client certificates.  
+- Binding an SSL certificate to a port configuration and supporting client certificates.  
   
--   Deleting an SSL certificate from a port number.  
+- Deleting an SSL certificate from a port number.  
   
  Note that modifying certificates stored on the computer requires administrative privileges.  
   
@@ -37,13 +37,13 @@ When creating a self-hosted Windows Communication Foundation (WCF) service with 
   
 1. In [!INCLUDE[ws2003](../../../../includes/ws2003-md.md)] or [!INCLUDE[wxp](../../../../includes/wxp-md.md)], use the HttpCfg.exe tool to view the current port configuration, using the **query** and **ssl** switches, as shown in the following example.  
   
-    ```  
+    ```console
     httpcfg query ssl  
     ```  
   
 2. In [!INCLUDE[wv](../../../../includes/wv-md.md)], use the Netsh.exe tool to view the current port configuration, as shown in the following example.  
   
-    ```  
+    ```console  
     netsh http show sslcert  
     ```  
   
@@ -61,31 +61,31 @@ When creating a self-hosted Windows Communication Foundation (WCF) service with 
   
 1. In [!INCLUDE[ws2003](../../../../includes/ws2003-md.md)] or [!INCLUDE[wxp](../../../../includes/wxp-md.md)], use the HttpCfg.exe tool in "set" mode on the Secure Sockets Layer (SSL) store to bind the certificate to a port number. The tool uses the thumbprint to identify the certificate, as shown in the following example.  
   
-    ```  
+    ```console  
     httpcfg set ssl -i 0.0.0.0:8012 -h 0000000000003ed9cd0c315bbb6dc1c08da5e6  
     ```  
   
-    -   The **-i** switch has the syntax of `IP`:`port` and instructs the tool to set the certificate to port 8012 of the computer. Optionally, the four zeroes that precede the number can also be replaced by the actual IP address of the computer.  
+    - The **-i** switch has the syntax of `IP`:`port` and instructs the tool to set the certificate to port 8012 of the computer. Optionally, the four zeroes that precede the number can also be replaced by the actual IP address of the computer.  
   
-    -   The **-h** switch specifies the thumbprint of the certificate.  
+    - The **-h** switch specifies the thumbprint of the certificate.  
   
 2. In [!INCLUDE[wv](../../../../includes/wv-md.md)], use the Netsh.exe tool, as shown in the following example.  
   
-    ```  
+    ```console  
     netsh http add sslcert ipport=0.0.0.0:8000 certhash=0000000000003ed9cd0c315bbb6dc1c08da5e6 appid={00112233-4455-6677-8899-AABBCCDDEEFF}   
     ```  
   
-    -   The **certhash** parameter specifies the thumbprint of the certificate.  
+    - The **certhash** parameter specifies the thumbprint of the certificate.  
   
-    -   The **ipport** parameter specifies the IP address and port, and functions just like the **-i** switch of the Httpcfg.exe tool described.  
+    - The **ipport** parameter specifies the IP address and port, and functions just like the **-i** switch of the Httpcfg.exe tool described.  
   
-    -   The **appid** parameter is a GUID that can be used to identify the owning application.  
+    - The **appid** parameter is a GUID that can be used to identify the owning application.  
   
 ### To bind an SSL certificate to a port number and support client certificates  
   
 1. In [!INCLUDE[ws2003](../../../../includes/ws2003-md.md)] or [!INCLUDE[wxp](../../../../includes/wxp-md.md)], to support clients that authenticate with X.509 certificates at the transport layer, follow the preceding procedure but pass an additional command-line parameter to HttpCfg.exe, as shown in the following example.  
   
-    ```  
+    ```console  
     httpcfg set ssl -i 0.0.0.0:8012 -h 0000000000003ed9cd0c315bbb6dc1c08da5e6 -f 2  
     ```  
   
@@ -93,7 +93,7 @@ When creating a self-hosted Windows Communication Foundation (WCF) service with 
   
 2. In [!INCLUDE[wv](../../../../includes/wv-md.md)], to support clients that authenticate with X.509 certificates at the transport layer, follow the preceding procedure, but with an additional parameter, as shown in the following example.  
   
-    ```  
+    ```console  
     netsh http add sslcert ipport=0.0.0.0:8000 certhash=0000000000003ed9cd0c315bbb6dc1c08da5e6 appid={00112233-4455-6677-8899-AABBCCDDEEFF} clientcertnegotiation=enable  
     ```  
   
@@ -101,19 +101,19 @@ When creating a self-hosted Windows Communication Foundation (WCF) service with 
   
 1. Use the HttpCfg.exe or Netsh.exe tool to see the ports and thumbprints of all bindings on the computer. To print the information to disk, use the redirection character ">", as shown in the following example.  
   
-    ```  
+    ```console  
     httpcfg query ssl>myMachinePorts.txt  
-    ```  
+    ```
   
 2. In [!INCLUDE[ws2003](../../../../includes/ws2003-md.md)] or [!INCLUDE[wxp](../../../../includes/wxp-md.md)], use the HttpCfg.exe tool with the **delete** and **ssl** keywords. Use the **-i** switch to specify the `IP`:`port` number, and the **-h** switch to specify the thumbprint.  
   
-    ```  
+    ```console  
     httpcfg delete ssl -i 0.0.0.0:8005 -h 0000000000003ed9cd0c315bbb6dc1c08da5e6  
     ```  
   
 3. In [!INCLUDE[wv](../../../../includes/wv-md.md)], use the Netsh.exe tool, as shown in the following example.  
   
-    ```  
+    ```console  
     Netsh http delete sslcert ipport=0.0.0.0:8005  
     ```  
   

@@ -12,15 +12,15 @@ This walkthrough shows you how to localize [!INCLUDE[TLA2#tla_winclient](../../.
 
 Tasks illustrated in this walkthrough include:
 
--   Creating the [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] host project.
+- Creating the [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] host project.
 
--   Adding localizable content.
+- Adding localizable content.
 
--   Enabling localization.
+- Enabling localization.
 
--   Assigning resource identifiers.
+- Assigning resource identifiers.
 
--   Using the LocBaml tool to produce a satellite assembly.
+- Using the LocBaml tool to produce a satellite assembly.
 
 For a complete code listing of the tasks illustrated in this walkthrough, see [Localizing a Hybrid Application Sample](https://go.microsoft.com/fwlink/?LinkID=160015).
 
@@ -30,7 +30,7 @@ When you are finished, you will have a localized hybrid application.
 
 You need the following components to complete this walkthrough:
 
--   Visual Studio 2017
+- Visual Studio 2017
 
 ## Creating the Windows Forms Host Project
 
@@ -116,7 +116,7 @@ You can map your localizable content to resource assemblies by using resource id
 
 2. Use the following command to assign resource identifiers to your localizable content.
 
-    ```
+    ```console
     msbuild -t:updateuid LocalizingWpfInWf.csproj
     ```
 
@@ -136,7 +136,7 @@ Your localized content is stored in a resource-only *satellite assembly*. Use th
 
 2. In the Command Prompt window, use the following command to extract resource strings into a temporary file.
 
-    ```
+    ```console
     LocBaml /parse LocalizingWpfInWf.g.en-US.resources /out:temp.csv
     ```
 
@@ -146,7 +146,7 @@ Your localized content is stored in a resource-only *satellite assembly*. Use th
 
 5. Use the following command to generate the localized resource file.
 
-    ```
+    ```console
     LocBaml /generate /trans:temp.csv LocalizingWpfInWf.g.en-US.resources /out:. /cul:es-ES
     ```
 
@@ -154,7 +154,7 @@ Your localized content is stored in a resource-only *satellite assembly*. Use th
 
 6. Use the following command to build the localized satellite assembly.
 
-    ```
+    ```console
     Al.exe /out:LocalizingWpfInWf.resources.dll /culture:es-ES /embed:LocalizingWpfInWf.Form1.es-ES.resources /embed:LocalizingWpfInWf.g.es-ES.resources
     ```
 

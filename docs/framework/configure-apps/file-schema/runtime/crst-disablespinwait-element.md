@@ -10,11 +10,11 @@ ms.author: "ronpet"
 ---
 # \<Crst_DisableSpinWait> element
 
-Specifies whether to disable spin-waiting for a critical section when contended. \ 
+Specifies whether to disable spin-waiting for a critical section when contended.  
   
- \<configuration>  
-\<runtime>  
-\<Crst_DisableSpinWait>  
+[**\<configuration>**](../configuration-element.md)\
+&nbsp;&nbsp;[**\<runtime>**](runtime-element.md)\
+&nbsp;&nbsp;&nbsp;&nbsp;**\<Crst_DisableSpinWait>**  
   
 ## Syntax  
   
@@ -30,14 +30,14 @@ The following sections describe attributes, child elements, and parent elements.
   
 |Attribute|Description|  
 |---------------|-----------------|  
-|**enabled**|Specifies whether spin-waiting for critical sections is enabled when they are contended.|  
+|**enabled**|Specifies whether spin-waiting for critical sections when they are contended is disabled.|  
   
 ## enabled Attribute  
   
 |Value|Description|  
 |-----------|-----------------|  
-|1|Spin-waiting is enabled.|  
-|0|Spin-waiting is disabled. This is the default|  
+|1|Disable spin-waiting when a critical section cannot be acquired.|  
+|0|Do not disable spin-waiting when a critical section cannot be acquired. This is the default value.|  
   
 ### Child Elements  
  None.  
@@ -63,5 +63,5 @@ The following example disables spin-waiting in critical sections when contended.
   
 ## See also
 
-- [Runtime Settings Schema](../../../../../docs/framework/configure-apps/file-schema/runtime/index.md)
-- [Configuration File Schema](../../../../../docs/framework/configure-apps/file-schema/index.md)
+- [Runtime Settings Schema](index.md)
+- [Configuration File Schema](../index.md)

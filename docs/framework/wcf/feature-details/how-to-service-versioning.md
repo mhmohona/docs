@@ -7,17 +7,17 @@ ms.assetid: 4287b6b3-b207-41cf-aebe-3b1d4363b098
 This topic outlines the basic steps required to create a routing configuration that routes messages to different versions of the same service. In this example, messages are routed to two different versions of a calculator service, `roundingCalc` (v1) and `regularCalc` (v2). Both implementations support the same operations; however the older service, `roundingCalc`, rounds all calculations to the nearest integer value before returning. A client application must be able to indicate whether to use the newer `regularCalc` service.  
   
 > [!WARNING]
->  In order to route a message to a specific service version, the Routing Service must be able to determine the message destination based on the message content. In the method demonstrated below, the client will specify the version by inserting information into a message header. There are methods of service versioning that do not require clients to pass additional data. For example, a message could be routed to the most recent or most compatible version of a service or the router could use a part of the standard SOAP envelope.  
+> In order to route a message to a specific service version, the Routing Service must be able to determine the message destination based on the message content. In the method demonstrated below, the client will specify the version by inserting information into a message header. There are methods of service versioning that do not require clients to pass additional data. For example, a message could be routed to the most recent or most compatible version of a service or the router could use a part of the standard SOAP envelope.  
   
  The operations exposed by both services are:  
   
--   Add  
+- Add  
   
--   Subtract  
+- Subtract  
   
--   Multiply  
+- Multiply  
   
--   Divide  
+- Divide  
   
  Because both service implementations handle the same operations, and are essentially identical other than the data that they return, the base data contained in messages sent from client applications is not unique enough to allow you to determine how to route the request. For example, Action filters cannot be used because the default actions for both services are the same.  
   

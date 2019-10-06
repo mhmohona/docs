@@ -18,12 +18,12 @@ This walkthrough demonstrates how to encrypt and decrypt content. The code examp
   
  This walkthrough uses the following guidelines for encryption:  
   
--   Use the <xref:System.Security.Cryptography.RijndaelManaged> class, a symmetric algorithm, to encrypt and decrypt data by using its automatically generated <xref:System.Security.Cryptography.SymmetricAlgorithm.Key%2A> and <xref:System.Security.Cryptography.SymmetricAlgorithm.IV%2A>.  
+- Use the <xref:System.Security.Cryptography.RijndaelManaged> class, a symmetric algorithm, to encrypt and decrypt data by using its automatically generated <xref:System.Security.Cryptography.SymmetricAlgorithm.Key%2A> and <xref:System.Security.Cryptography.SymmetricAlgorithm.IV%2A>.  
   
--   Use the <xref:System.Security.Cryptography.RSACryptoServiceProvider>, an asymmetric algorithm, to encrypt and decrypt the key to the data encrypted by <xref:System.Security.Cryptography.RijndaelManaged>. Asymmetric algorithms are best used for smaller amounts of data, such as a key.  
+- Use the <xref:System.Security.Cryptography.RSACryptoServiceProvider>, an asymmetric algorithm, to encrypt and decrypt the key to the data encrypted by <xref:System.Security.Cryptography.RijndaelManaged>. Asymmetric algorithms are best used for smaller amounts of data, such as a key.  
   
     > [!NOTE]
-    >  If you want to protect data on your computer instead of exchanging encrypted content with other people, consider using the <xref:System.Security.Cryptography.ProtectedData> or <xref:System.Security.Cryptography.ProtectedMemory> classes.  
+    > If you want to protect data on your computer instead of exchanging encrypted content with other people, consider using the <xref:System.Security.Cryptography.ProtectedData> or <xref:System.Security.Cryptography.ProtectedMemory> classes.  
   
  The following table summarizes the cryptographic tasks in this topic.  
   
@@ -42,7 +42,7 @@ This walkthrough demonstrates how to encrypt and decrypt content. The code examp
 ## Prerequisites  
  You need the following components to complete this walkthrough:  
   
--   References to the <xref:System.IO> and <xref:System.Security.Cryptography> namespaces.  
+- References to the <xref:System.IO> and <xref:System.Security.Cryptography> namespaces.  
   
 ## Creating a Windows Forms Application  
  Most of the code examples in this walkthrough are designed to be event handlers for button controls. The following table lists the controls required for the sample application and their required names to match the code examples.  
@@ -55,7 +55,7 @@ This walkthrough demonstrates how to encrypt and decrypt content. The code examp
 |<xref:System.Windows.Forms.Button>|`buttonExportPublicKey`|Export Public Key|  
 |<xref:System.Windows.Forms.Button>|`buttonImportPublicKey`|Import Public Key|  
 |<xref:System.Windows.Forms.Button>|`buttonGetPrivateKey`|Get Private Key|  
-|<xref:System.Windows.Forms.Label>|`label1`||  
+|<xref:System.Windows.Forms.Label>|`label1`|Key not set|  
 |<xref:System.Windows.Forms.OpenFileDialog>|`openFileDialog1`||  
 |<xref:System.Windows.Forms.OpenFileDialog>|`openFileDialog2`||  
   
@@ -94,15 +94,15 @@ This walkthrough demonstrates how to encrypt and decrypt content. The code examp
   
  The encryption package uses the following format:  
   
--   Key length, bytes 0 - 3  
+- Key length, bytes 0 - 3  
   
--   IV length, bytes 4 - 7  
+- IV length, bytes 4 - 7  
   
--   Encrypted key  
+- Encrypted key  
   
--   IV  
+- IV  
   
--   Cipher text  
+- Cipher text  
   
  You can use the lengths of the key and IV to determine the starting points and lengths of all parts of the encryption package, which can then be used to decrypt the file.  
   

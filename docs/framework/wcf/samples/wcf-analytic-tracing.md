@@ -16,11 +16,11 @@ This sample demonstrates how to add your own tracing events into the stream of a
 ## Self-Hosting vs. Web Hosting  
  For Web-hosted services, WCF’s analytic traces provide a field, called "HostReference", which is used to identify the service that is emitting the traces. The extensible user traces can participate in this model and this sample demonstrates best practices for doing so. The format of a Web host reference when the pipe ‘&#124;’ character actually appears in the resulting string can be any one of the following:  
   
--   If the application is not at the root.  
+- If the application is not at the root.  
   
      \<SiteName>\<ApplicationVirtualPath>&#124;\<ServiceVirtualPath>&#124;\<ServiceName>  
   
--   If the application is at the root.  
+- If the application is at the root.  
   
      \<SiteName>&#124;\<ServiceVirtualPath>&#124;\<ServiceName>  
   
@@ -71,13 +71,13 @@ This sample demonstrates how to add your own tracing events into the stream of a
   
 10. Test the service using the WCF Test Client.  
   
-    1.  In the WCF Test Client, double-click **Add()** under the ICalculator service node.  
+    1. In the WCF Test Client, double-click **Add()** under the ICalculator service node.  
   
          The **Add()** method appears in the right pane with two parameters.  
   
-    2.  Type in 2 for the first parameter and 3 for the second parameter.  
+    2. Type in 2 for the first parameter and 3 for the second parameter.  
   
-    3.  Click **Invoke** to invoke the method.  
+    3. Click **Invoke** to invoke the method.  
   
 11. Go to the **Event Viewer** window that you have already opened. Navigate to **Event Viewer**, **Applications and Services Logs**, **Microsoft**, **Windows**, **Application Server-Applications**.  
   
@@ -103,13 +103,13 @@ This sample demonstrates how to add your own tracing events into the stream of a
  There is a known issue in the **Event Viewer** where it may fail to decode ETW events. You may see an error message that says: "The description for Event ID \<id> from source Microsoft-Windows-Application Server-Applications cannot be found. Either the component that raises this event is not installed on your local computer or the installation is corrupted. You can install or repair the component on the local computer." If you encounter this error, select **Refresh** from the **Actions** menu. The event should then decode properly.  
   
 > [!IMPORTANT]
->  The samples may already be installed on your computer. Check for the following (default) directory before continuing.  
+> The samples may already be installed on your computer. Check for the following (default) directory before continuing.  
 >   
->  `<InstallDrive>:\WF_WCF_Samples`  
+> `<InstallDrive>:\WF_WCF_Samples`  
 >   
->  If this directory does not exist, go to [Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF) Samples for .NET Framework 4](https://go.microsoft.com/fwlink/?LinkId=150780) to download all Windows Communication Foundation (WCF) and [!INCLUDE[wf1](../../../../includes/wf1-md.md)] samples. This sample is located in the following directory.  
+> If this directory does not exist, go to [Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF) Samples for .NET Framework 4](https://go.microsoft.com/fwlink/?LinkId=150780) to download all Windows Communication Foundation (WCF) and [!INCLUDE[wf1](../../../../includes/wf1-md.md)] samples. This sample is located in the following directory.  
 >   
->  `<InstallDrive>:\WF_WCF_Samples\WCF\Basic\Management\ETWTrace`  
+> `<InstallDrive>:\WF_WCF_Samples\WCF\Basic\Management\ETWTrace`  
   
 ## See also
 

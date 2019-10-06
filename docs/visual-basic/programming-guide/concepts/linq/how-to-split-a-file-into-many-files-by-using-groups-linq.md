@@ -10,7 +10,7 @@ This example shows one way to merge the contents of two files and then create a 
   
 1. Copy these names into a text file that is named names1.txt and save it in your project folder:  
   
-    ```  
+    ```text  
     Bankov, Peter  
     Holm, Michael  
     Garcia, Hugo  
@@ -25,7 +25,7 @@ This example shows one way to merge the contents of two files and then create a 
   
 2. Copy these names into a text file that is named names2.txt and save it in your project folder: Note that the two files have some names in common.  
   
-    ```  
+    ```text  
     Liu, Jinghao  
     Bankov, Peter  
     Holm, Michael  
@@ -110,7 +110,7 @@ End Class
  The program writes a separate file for each group in the same folder as the data files.  
   
 ## Compiling the Code  
- Create a project that targets the .NET Framework version 3.5 or higher with a reference to System.Core.dll and a `Imports` statement for the System.Linq namespace.  
+Create a VB.NET console application project, with an `Imports` statement for the System.Linq namespace.
   
 ## See also
 

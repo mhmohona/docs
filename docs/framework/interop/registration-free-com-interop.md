@@ -18,9 +18,9 @@ Registration-free COM interop activates a component without using the Windows re
   
  Using registration-free activation for your assemblies instead of registering them during deployment offers two advantages:  
   
--   You can control which DLL version is activated when more than one version is installed on a computer.  
+- You can control which DLL version is activated when more than one version is installed on a computer.  
   
--   End users can use XCOPY or FTP to copy your application to an appropriate directory on their computer. The application can then be run from that directory.  
+- End users can use XCOPY or FTP to copy your application to an appropriate directory on their computer. The application can then be run from that directory.  
   
  This section describes the two types of manifests needed for registration-free COM interop: application and component manifests. These manifests are XML files. An application manifest, which is created by an application developer, contains metadata that describes assemblies and assembly dependencies. A component manifest, created by a component developer, contains information otherwise located in the Windows registry.  
   
@@ -35,7 +35,7 @@ Registration-free COM interop activates a component without using the Windows re
   
      The Windows Server 2003 family also supports registration-free COM interop for .NET-based assemblies.  
   
-     For a .NET-based class to be compatible with registry-free activation from COM, the class must have a default constructor and must be public.  
+     For a .NET-based class to be compatible with registry-free activation from COM, the class must have a parameterless constructor and must be public.  
   
 ### Configuring COM components for registration-free activation  
   
@@ -46,8 +46,8 @@ Registration-free COM interop activates a component without using the Windows re
      Registration-free activation is optional for COM components installed on Windows XP. For detailed instructions on adding a side-by-side assembly to an application, see [Using Side-by-side Assemblies](/windows/desktop/SbsCs/using-side-by-side-assemblies).  
   
     > [!NOTE]
-    >  Side-by-side execution is a .NET Framework feature that enables multiple versions of the runtime, and multiple versions of applications and components that use a version of the runtime, to run on the same computer at the same time. Side-by-side execution and side-by-side assemblies are different mechanisms for providing side-by-side functionality.  
+    > Side-by-side execution is a .NET Framework feature that enables multiple versions of the runtime, and multiple versions of applications and components that use a version of the runtime, to run on the same computer at the same time. Side-by-side execution and side-by-side assemblies are different mechanisms for providing side-by-side functionality.  
   
 ## See also
 
-- [How to: Configure .NET Framework-Based COM Components for Registration-Free Activation](../../../docs/framework/interop/configure-net-framework-based-com-components-for-reg.md)
+- [How to: Configure .NET Framework-Based COM Components for Registration-Free Activation](configure-net-framework-based-com-components-for-reg.md)

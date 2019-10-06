@@ -12,7 +12,7 @@ ms.assetid: fbf642e9-f670-4efd-a7af-a67468a1c8e1
 A <xref:System.Windows.Controls.Primitives.Popup> control displays content in a separate window that floats over an application. You can specify the position of a <xref:System.Windows.Controls.Primitives.Popup> relative to a control, the mouse, or the screen by using the <xref:System.Windows.Controls.Primitives.Popup.PlacementTarget%2A>, <xref:System.Windows.Controls.Primitives.Popup.Placement%2A>, <xref:System.Windows.Controls.Primitives.Popup.PlacementRectangle%2A>, <xref:System.Windows.Controls.Primitives.Popup.HorizontalOffset%2A>, and <xref:System.Windows.Controls.Primitives.Popup.VerticalOffset%2A> properties.  These properties work together to give you flexibility in specifying the position of the <xref:System.Windows.Controls.Primitives.Popup>.  
   
 > [!NOTE]
->  The <xref:System.Windows.Controls.ToolTip> and <xref:System.Windows.Controls.ContextMenu> classes also define these five properties and behave similarly.  
+> The <xref:System.Windows.Controls.ToolTip> and <xref:System.Windows.Controls.ContextMenu> classes also define these five properties and behave similarly.  
 
 <a name="Positioning"></a>   
 ## Positioning the Popup  
@@ -30,13 +30,13 @@ A <xref:System.Windows.Controls.Primitives.Popup> control displays content in a 
 ## Definitions of Terms: The Anatomy of a Popup  
  The following terms are useful in understanding how the <xref:System.Windows.Controls.Primitives.Popup.PlacementTarget%2A>, <xref:System.Windows.Controls.Primitives.Popup.Placement%2A>, <xref:System.Windows.Controls.Primitives.Popup.PlacementRectangle%2A>, <xref:System.Windows.Controls.Primitives.Popup.HorizontalOffset%2A>, and <xref:System.Windows.Controls.Primitives.Popup.VerticalOffset%2A> properties relate to each other and the <xref:System.Windows.Controls.Primitives.Popup>:  
   
--   Target object  
+- Target object  
   
--   Target area  
+- Target area  
   
--   Target origin  
+- Target origin  
   
--   Popup alignment point  
+- Popup alignment point  
   
  These terms provide a convenient way to refer to various aspects of the <xref:System.Windows.Controls.Primitives.Popup> and the control that it is associated with.  
   
@@ -60,7 +60,7 @@ A <xref:System.Windows.Controls.Primitives.Popup> control displays content in a 
  ![Popup positioned relative to an ellipse](./media/popup-placement-behavior/popup-placement-with-placement-target.png "Popup with PlacementTarget")    
   
 > [!NOTE]
->  For <xref:System.Windows.Controls.ToolTip>, the default value of <xref:System.Windows.Controls.Primitives.Popup.Placement%2A> is <xref:System.Windows.Controls.Primitives.PlacementMode.Mouse>.  For <xref:System.Windows.Controls.ContextMenu>, the default value of <xref:System.Windows.Controls.Primitives.Popup.Placement%2A> is <xref:System.Windows.Controls.Primitives.PlacementMode.MousePoint>. These values are explained later, in "How the Properties Work Together."  
+> For <xref:System.Windows.Controls.ToolTip>, the default value of <xref:System.Windows.Controls.Primitives.Popup.Placement%2A> is <xref:System.Windows.Controls.Primitives.PlacementMode.Mouse>.  For <xref:System.Windows.Controls.ContextMenu>, the default value of <xref:System.Windows.Controls.Primitives.Popup.Placement%2A> is <xref:System.Windows.Controls.Primitives.PlacementMode.MousePoint>. These values are explained later, in "How the Properties Work Together."  
   
 ### Target Area  
  The *target area* is the area on the screen that the <xref:System.Windows.Controls.Primitives.Popup> is relative to. In the previous examples, the <xref:System.Windows.Controls.Primitives.Popup> is aligned with the bounds of the target object, but in some cases, the <xref:System.Windows.Controls.Primitives.Popup> is aligned to other bounds, even if the <xref:System.Windows.Controls.Primitives.Popup> has a target object.  If the <xref:System.Windows.Controls.Primitives.Popup.PlacementRectangle%2A> property is set, the target area is different than the bounds of the target object.  
@@ -129,11 +129,11 @@ A <xref:System.Windows.Controls.Primitives.Popup> control displays content in a 
 ## When the Popup Encounters the Edge of the Screen  
  For security reasons, a <xref:System.Windows.Controls.Primitives.Popup> cannot be hidden by the edge of a screen. One of the following three things happens when the <xref:System.Windows.Controls.Primitives.Popup> encounters a screen edge:  
   
--   The popup realigns itself along the screen edge that would obscure the <xref:System.Windows.Controls.Primitives.Popup>.  
+- The popup realigns itself along the screen edge that would obscure the <xref:System.Windows.Controls.Primitives.Popup>.  
   
--   The popup uses a different popup alignment point.  
+- The popup uses a different popup alignment point.  
   
--   The popup uses a different target origin and popup alignment point.  
+- The popup uses a different target origin and popup alignment point.  
   
  These options are described further later in this section.  
   

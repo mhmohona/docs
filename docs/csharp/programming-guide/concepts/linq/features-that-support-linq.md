@@ -20,11 +20,11 @@ var query = from str in stringArray
             select stringGroup;
 ```
 
-For more information, see [LINQ Query Expressions](../../../../csharp/programming-guide/linq-query-expressions/index.md).
+For more information, see [LINQ Query Expressions](../../linq-query-expressions/index.md).
 
 ## Implicitly Typed Variables (var)
 
-Instead of explicitly specifying a type when you declare and initialize a variable, you can use the [var](../../../../csharp/language-reference/keywords/var.md) modifier to instruct the compiler to infer and assign the type, as shown here:
+Instead of explicitly specifying a type when you declare and initialize a variable, you can use the [var](../../../language-reference/keywords/var.md) modifier to instruct the compiler to infer and assign the type, as shown here:
 
 ```csharp
 var number = 5;
@@ -36,14 +36,14 @@ var query = from str in stringArray
 
 Variables declared as `var` are just as strongly-typed as variables whose type you specify explicitly. The use of `var` makes it possible to create anonymous types, but it can be used only for local variables. Arrays can also be declared with implicit typing.
 
-For more information, see [Implicitly Typed Local Variables](../../../../csharp/programming-guide/classes-and-structs/implicitly-typed-local-variables.md).
+For more information, see [Implicitly Typed Local Variables](../../classes-and-structs/implicitly-typed-local-variables.md).
 
 ## Object and Collection Initializers
 
 Object and collection initializers make it possible to initialize objects without explicitly calling a constructor for the object. Initializers are typically used in query expressions when they project the source data into a new data type. Assuming a class named `Customer` with public `Name` and `Phone` properties, the object initializer can be used as in the following code:
 
 ```csharp
-Customer cust = new Customer { Name = "Mike", Phone = "555-1212" };
+var cust = new Customer { Name = "Mike", Phone = "555-1212" };
 ```
 
 Continuing with our `Customer` class, assume that there is a data source called `IncomingOrders`, and that for each order with a large `OrderSize`, we would like to create a new `Customer` based off of that order. A LINQ query can be executed on this data source and use object initialization to fill a collection:
@@ -62,9 +62,9 @@ var newLargeOrderCustomers = IncomingOrders.Where(x => x.OrderSize > 5).Select(y
 
 For more information, see:
 
-- [Object and Collection Initializers](../../../../csharp/programming-guide/classes-and-structs/object-and-collection-initializers.md)
+- [Object and Collection Initializers](../../classes-and-structs/object-and-collection-initializers.md)
 
-- [Query Expression Syntax for Standard Query Operators](../../../../csharp/programming-guide/concepts/linq/query-expression-syntax-for-standard-query-operators.md)
+- [Query Expression Syntax for Standard Query Operators](./query-expression-syntax-for-standard-query-operators.md)
 
 ## Anonymous Types
 
@@ -74,13 +74,13 @@ An anonymous type is constructed by the compiler and the type name is only avail
 select new {name = cust.Name, phone = cust.Phone};
 ```
 
-For more information, see [Anonymous Types](../../../../csharp/programming-guide/classes-and-structs/anonymous-types.md).
+For more information, see [Anonymous Types](../../classes-and-structs/anonymous-types.md).
 
 ## Extension Methods
 
 An extension method is a static method that can be associated with a type, so that it can be called as if it were an instance method on the type. This feature enables you to, in effect, "add" new methods to existing types without actually modifying them. The standard query operators are a set of extension methods that provide [!INCLUDE[vbteclinq](~/includes/vbteclinq-md.md)] query functionality for any type that implements <xref:System.Collections.Generic.IEnumerable%601>.
 
-For more information, see [Extension Methods](../../../../csharp/programming-guide/classes-and-structs/extension-methods.md).
+For more information, see [Extension Methods](../../classes-and-structs/extension-methods.md).
 
 ## Lambda Expressions
 
@@ -88,12 +88,12 @@ A lambda expression is an inline function that uses the => operator to separate 
 
 For more information, see:
 
-- [Anonymous Functions](../../../../csharp/programming-guide/statements-expressions-operators/anonymous-functions.md)
+- [Anonymous Functions](../../statements-expressions-operators/anonymous-functions.md)
 
-- [Lambda Expressions](../../../../csharp/programming-guide/statements-expressions-operators/lambda-expressions.md)
+- [Lambda Expressions](../../statements-expressions-operators/lambda-expressions.md)
 
-- [Expression Trees (C#)](../../../../csharp/programming-guide/concepts/expression-trees/index.md)
+- [Expression Trees (C#)](../expression-trees/index.md)
 
 ## See also
 
-- [Language-Integrated Query (LINQ) (C#)](../../../../csharp/programming-guide/concepts/linq/index.md)
+- [Language-Integrated Query (LINQ) (C#)](./index.md)

@@ -18,19 +18,6 @@
     href: standard/frameworks.md
   - name: .NET Glossary
     href: standard/glossary.md
-  - name: Architecture Guidance
-    href: standard/guidance-architecture.md
-    items:
-    - name: Architect Modern web applications with ASP.NET Core and Microsoft Azure
-      href: standard/modern-web-apps-azure-architecture/
-    - name: Modernize Existing .NET Applications with Azure cloud and Windows Containers
-      href: standard/modernize-with-azure-and-containers/
-    - name: Containerized Docker Application Lifecycle with the Microsoft Platform and Tools
-      href: standard/containerized-lifecycle-architecture/
-    - name: ".NET Microservices: Architecture for Containerized .NET Applications"
-      href: standard/microservices-architecture/
-    - name: "Serverless apps: Architecture, patterns, and Azure implementation"
-      href: standard/serverless-architecture/
   - name: Open-source Library Guidance
     href: standard/library-guidance/
   - name: Choosing between .NET Core and .NET Framework for server apps
@@ -68,12 +55,7 @@
   - name: Handling and throwing exceptions
     href: standard/exceptions/
   - name: Assemblies in .NET
-    href: standard/assembly/index.md
-    items:
-    - name: .NET Assembly File Format
-      href: standard/assembly/file-format.md
-    - name: "How to: Use and Debug Assembly Unloadability in .NET Core"
-      href: standard/assembly/unloadability-howto.md
+    href: standard/assembly/
   - name: Garbage Collection
     href: standard/garbage-collection/
   - name: Generic types
@@ -108,16 +90,30 @@
     items:
     - name: P/Invoke
       href: standard/native-interop/pinvoke.md
-    - name: Type marshalling
-      href: standard/native-interop/type-marshalling.md
-    - name: Customizing structure marshalling
-      href: standard/native-interop/customize-struct-marshalling.md
-    - name: Customizing parameter marshalling
-      href: standard/native-interop/customize-parameter-marshalling.md
+    - name: Type marshaling
+      href: standard/native-interop/type-marshaling.md
+    - name: Customizing structure marshaling
+      href: standard/native-interop/customize-struct-marshaling.md
+    - name: Customizing parameter marshaling
+      href: standard/native-interop/customize-parameter-marshaling.md
     - name: Interop guidance
       href: standard/native-interop/best-practices.md
-    - name: Charsets and marshalling
+    - name: Charsets and marshaling
       href: standard/native-interop/charset.md
+    - name: COM Interop
+      href: standard/native-interop/cominterop.md
+      items:
+        - name: COM Wrappers
+          href: standard/native-interop/com-wrappers.md
+          items:
+            - name: Runtime Callable Wrapper
+              href: standard/native-interop/runtime-callable-wrapper.md
+            - name: COM Callable Wrapper
+              href: standard/native-interop/com-callable-wrapper.md
+        - name: Qualifying .NET types for COM interoperation
+          href: standard/native-interop/qualify-net-types-for-interoperation.md
+    - name: Applying Interop Attributes
+      href: standard/native-interop/apply-interop-attributes.md
   - name: Collections and Data Structures
     href: standard/collections/
   - name: Numerics in .NET
@@ -183,7 +179,6 @@
   - name: Linux Prerequisites
     href: core/linux-prerequisites.md
   - name: What's new in .NET Core
-    href: core/whats-new/index.md
     items:
     - name: What's new in .NET Core 3.0
       href: core/whats-new/dotnet-core-3-0.md
@@ -193,9 +188,19 @@
       href: core/whats-new/dotnet-core-2-1.md
     - name: What's new in .NET Core 2.0
       href: core/whats-new/dotnet-core-2-0.md
+  - name: Application Compatibility
+    href: core/compatibility/
   - name: Tutorials
     href: core/tutorials/index.md
     items:
+    - name: Templates for the CLI
+      items:
+      - name: 1 - Create an item template
+        href: core/tutorials/cli-templates-create-item-template.md
+      - name: 2 - Create a project template
+        href: core/tutorials/cli-templates-create-project-template.md
+      - name: 3 - Create a template pack
+        href: core/tutorials/cli-templates-create-template-pack.md
     - name: Get started with .NET Core on macOS
       href: core/tutorials/using-on-macos.md
     - name: Get started with .NET Core on macOS using Visual Studio for Mac
@@ -208,12 +213,16 @@
       href: core/tutorials/testing-with-cli.md
     - name: Developing Libraries with Cross Platform Tools
       href: core/tutorials/libraries.md
+    - name: Create a .NET Core application with plugins
+      href: core/tutorials/creating-app-with-plugin-support.md      
     - name: Developing ASP.NET Core applications
       href: core/tutorials/aspnet-core.md
     - name: Hosting .NET Core from native code
       href: core/tutorials/netcore-hosting.md
-    - name: Create a custom template for dotnet new
-      href: core/tutorials/create-custom-template.md
+  - name: Native Interoperability
+    items:
+    - name: Exposing .NET Core Components to COM
+      href: core/native-interop/expose-components-to-com.md
   - name: Packages, Metapackages and Frameworks
     href: core/packages.md
   - name: Changes in CLI overview
@@ -249,11 +258,19 @@
   - name: Docker
     items:
     - name: Introduction to .NET and Docker
-      href: core/docker/intro-net-docker.md
+      href: core/docker/introduction.md
     - name: Containerize a .NET Core app
       href: core/docker/build-container.md
-    - name: Visual Studio Tools for Docker
-      href: /aspnet/core/publishing/visual-studio-tools-for-docker
+    - name: Container Tools in Visual Studio
+      href: /visualstudio/containers/overview
+  - name: Diagnostic tools
+    items:
+    - name: Overview
+      href: core/diagnostics/index.md
+    - name: Managed debuggers
+      href: core/diagnostics/managed-debuggers.md
+    - name: Logging and tracing
+      href: core/diagnostics/logging-tracing.md
   - name: Unit Testing
     href: core/testing/index.md
     items:
@@ -283,6 +300,8 @@
       href: core/testing/unit-testing-published-output.md
     - name: Live unit testing .NET Core projects with Visual Studio
       href: /visualstudio/test/live-unit-testing-start
+  - name: Continuous Integration
+    href: core/tools/using-ci-with-cli.md
   - name: Versioning
     href: core/versions/index.md
     items:
@@ -290,83 +309,93 @@
       href: core/versions/selection.md
     - name: Removing outdated runtimes and SDKs
       href: core/versions/remove-runtime-sdk-versions.md
-  - name: Runtime IDentifier catalog
+  - name: Runtime Identifier (RID) catalog
     href: core/rid-catalog.md
   - name: .NET Core SDK Overview
     href: core/sdk.md
-  - name: .NET Core CLI Tools
-    href: core/tools/index.md
+  - name: .NET Core CLI
     items:
-    - name: Telemetry
-      href: core/tools/telemetry.md
-    - name: Global Tools
-      href: core/tools/global-tools.md
+    - name: Overview
+      href: core/tools/index.md
+    - name: Tools
+      expanded: true
       items:
-      - name: Create a Global Tool
-        href: core/tools/global-tools-how-to-create.md
+      - name: Global Tools
+        expanded: true
+        items:
+        - name: Overview
+          href: core/tools/global-tools.md
+        - name: Create a Global Tool
+          href: core/tools/global-tools-how-to-create.md
+      - name: Troubleshoot tool usage issues
+        href: core/tools/troubleshoot-usage-issues.md
+    - name: Elevated access
+      href: core/tools/elevated-access.md
     - name: Extensibility Model
       href: core/tools/extensibility.md
-    - name: Continuous Integration
-      href: core/tools/using-ci-with-cli.md
     - name: Custom templates
       href: core/tools/custom-templates.md
     - name: Enable TAB completion
       href: core/tools/enable-tab-autocomplete.md
-    - name: dotnet
-      href: core/tools/dotnet.md
-    - name: dotnet build
-      href: core/tools/dotnet-build.md
-    - name: dotnet build-server
-      href: core/tools/dotnet-build-server.md
-    - name: dotnet clean
-      href: core/tools/dotnet-clean.md
-    - name: dotnet help
-      href: core/tools/dotnet-help.md
-    - name: dotnet migrate
-      href: core/tools/dotnet-migrate.md
-    - name: dotnet msbuild
-      href: core/tools/dotnet-msbuild.md
-    - name: dotnet new
-      href: core/tools/dotnet-new.md
-    - name: dotnet nuget
+    - name: Telemetry
+      href: core/tools/telemetry.md
+    - name: global.json overview
+      href: core/tools/global-json.md
+    - name: Reference
       items:
-      - name: dotnet nuget delete
-        href: core/tools/dotnet-nuget-delete.md
-      - name: dotnet nuget locals
-        href: core/tools/dotnet-nuget-locals.md
-      - name: dotnet nuget push
-        href: core/tools/dotnet-nuget-push.md
-    - name: dotnet pack
-      href: core/tools/dotnet-pack.md
-    - name: dotnet publish
-      href: core/tools/dotnet-publish.md
-    - name: dotnet restore
-      href: core/tools/dotnet-restore.md
-    - name: dotnet run
-      href: core/tools/dotnet-run.md
-    - name: dotnet sln
-      href: core/tools/dotnet-sln.md
-    - name: dotnet store
-      href: core/tools/dotnet-store.md
-    - name: dotnet test
-      href: core/tools/dotnet-test.md
-    - name: dotnet tool
-      items:
-      - name: dotnet tool install
-        href: core/tools/dotnet-tool-install.md
-      - name: dotnet tool list
-        href: core/tools/dotnet-tool-list.md
-      - name: dotnet tool uninstall
-        href: core/tools/dotnet-tool-uninstall.md
-      - name: dotnet tool update
-        href: core/tools/dotnet-tool-update.md
-    - name: dotnet vstest
-      href: core/tools/dotnet-vstest.md
-    - name: dotnet-install scripts
-      href: core/tools/dotnet-install-script.md
-    - name: Project modification commands
-      items:
-      - name: References
+      - name: dotnet
+        href: core/tools/dotnet.md
+      - name: dotnet build
+        href: core/tools/dotnet-build.md
+      - name: dotnet build-server
+        href: core/tools/dotnet-build-server.md
+      - name: dotnet clean
+        href: core/tools/dotnet-clean.md
+      - name: dotnet help
+        href: core/tools/dotnet-help.md
+      - name: dotnet migrate
+        href: core/tools/dotnet-migrate.md
+      - name: dotnet msbuild
+        href: core/tools/dotnet-msbuild.md
+      - name: dotnet new
+        href: core/tools/dotnet-new.md
+      - name: dotnet nuget
+        items:
+        - name: dotnet nuget delete
+          href: core/tools/dotnet-nuget-delete.md
+        - name: dotnet nuget locals
+          href: core/tools/dotnet-nuget-locals.md
+        - name: dotnet nuget push
+          href: core/tools/dotnet-nuget-push.md
+      - name: dotnet pack
+        href: core/tools/dotnet-pack.md
+      - name: dotnet publish
+        href: core/tools/dotnet-publish.md
+      - name: dotnet restore
+        href: core/tools/dotnet-restore.md
+      - name: dotnet run
+        href: core/tools/dotnet-run.md
+      - name: dotnet sln
+        href: core/tools/dotnet-sln.md
+      - name: dotnet store
+        href: core/tools/dotnet-store.md
+      - name: dotnet test
+        href: core/tools/dotnet-test.md
+      - name: dotnet tool
+        items:
+        - name: dotnet tool install
+          href: core/tools/dotnet-tool-install.md
+        - name: dotnet tool list
+          href: core/tools/dotnet-tool-list.md
+        - name: dotnet tool uninstall
+          href: core/tools/dotnet-tool-uninstall.md
+        - name: dotnet tool update
+          href: core/tools/dotnet-tool-update.md
+      - name: dotnet vstest
+        href: core/tools/dotnet-vstest.md
+      - name: dotnet-install scripts
+        href: core/tools/dotnet-install-script.md
+      - name: Project reference commands
         items:
         - name: dotnet add reference
           href: core/tools/dotnet-add-reference.md
@@ -374,7 +403,7 @@
           href: core/tools/dotnet-list-reference.md
         - name: dotnet remove reference
           href: core/tools/dotnet-remove-reference.md
-      - name: Packages
+      - name: Project package commands
         items:
         - name: dotnet add package
           href: core/tools/dotnet-add-package.md
@@ -382,8 +411,6 @@
           href: core/tools/dotnet-list-package.md
         - name: dotnet remove package
           href: core/tools/dotnet-remove-package.md
-    - name: global.json
-      href: core/tools/global-json.md
   - name: .NET Core Additional Tools
     href: core/additional-tools/index.md
     items:
@@ -414,6 +441,28 @@
       href: core/porting/winforms.md
     - name: Port WPF projects
       href: core/porting/wpf.md
+  - name: Dependency loading
+    items:
+    - name: Overview
+      href: core/dependency-loading/overview.md
+    - name: Understanding AssemblyLoadContext
+      href: core/dependency-loading/understanding-assemblyloadcontext.md
+    - name: Loading details
+      items:
+      - name: Default dependency probing
+        href: core/dependency-loading/default-probing.md
+      - name: Loading managed assemblies
+        href: core/dependency-loading/loading-managed.md
+      - name: Loading satellite assemblies
+        href: core/dependency-loading/loading-resources.md
+      - name: Loading unmanaged libraries
+        href: core/dependency-loading/loading-unmanaged.md
+    - name: Tutorials
+      items:
+      - name: Create a .NET Core application with plugins
+        href: core/tutorials/creating-app-with-plugin-support.md
+      - name: How to use and debug assembly unloadability in .NET Core
+        href: standard/assembly/unloadability-howto.md
   - name: Build .NET Core from source
     href: core/build/index.md
     items:
@@ -432,11 +481,6 @@
     href: framework/install/
   - name: Migration Guide
     href: framework/migration-guide/
-  - name: .NET Framework on Docker Guide
-    href: framework/docker/index.md
-    items:
-    - name: Running Console Apps in Containers
-      href: framework//docker/console.md
   - name: Development Guide
     href: framework/development-guide.md
     items:
@@ -493,17 +537,21 @@
     href: framework/tools/
   - name: Additional Class Libraries and APIs
     href: framework/additional-apis/
+- name: .NET Desktop Guide - WPF
+  href: desktop-wpf/
 - name: C# Guide
   href: csharp/index.md
   items:
   - name: Get Started
     href: csharp/getting-started/
   - name: Tutorials
-    href: csharp/tutorials/index.md
     items:
-    - name: Introduction to C#
-      href: csharp/tutorials/intro-to-csharp/index.md
+    - name: Overview
+      href: csharp/tutorials/index.md
+    - name: Introduction to programming with C#
       items:
+      - name: Choose your first lesson
+        href: csharp/tutorials/intro-to-csharp/index.md
       - name: Hello world
         href: csharp/tutorials/intro-to-csharp/hello-world.yml
       - name: Numbers in C#
@@ -513,8 +561,9 @@
       - name: List collections
         href: csharp/tutorials/intro-to-csharp/list-collection.yml
       - name: Work in your local environment
-        href: csharp/tutorials/intro-to-csharp/local-environment.md
         items:
+        - name: Setup your environment
+          href: csharp/tutorials/intro-to-csharp/local-environment.md
         - name: Numbers in C#
           href: csharp/tutorials/intro-to-csharp/numbers-in-csharp-local.md
         - name: Branches and loops
@@ -525,14 +574,16 @@
           href: csharp/tutorials/intro-to-csharp/introduction-to-classes.md
     - name: Explore C# 6
       href: csharp/tutorials/exploration/csharp-6.yml
-    - name: Explore C# 7.0
-      href: csharp/tutorials/exploration/csharp-7.yml
     - name: Explore string interpolation - interactive
       href: csharp/tutorials/exploration/interpolated-strings.yml
     - name: Explore string interpolation - in your environment
       href: csharp/tutorials/exploration/interpolated-strings-local.md
     - name: Advanced scenarios for string Interpolation
       href: csharp/tutorials/string-interpolation.md
+    - name: Safely update interfaces with default interface members
+      href: csharp/tutorials/default-interface-members-versions.md
+    - name: Explore indexes and ranges
+      href: csharp/tutorials/ranges-indexes.md
     - name: Work with nullable reference types
       href: csharp/tutorials/nullable-reference-types.md
     - name: Upgrade an app to nullable reference types
@@ -555,7 +606,7 @@
     href: csharp/tour-of-csharp/
   - name: What's new in C#
     items:
-    - name: C# 8.0 - Preview 2
+    - name: C# 8.0
       href: csharp/whats-new/csharp-8.md
     - name: C# 7.3
       href: csharp/whats-new/csharp-7-3.md
@@ -577,14 +628,16 @@
     items:
     - name: C# Type system
       href: csharp/programming-guide/types/index.md
+    - name: Nullable reference types
+      href: csharp/nullable-references.md
+    - name: Describe nullable APIs using attributes and constraints
+      href: csharp/nullable-attributes.md
     - name: Namespaces
       href: csharp/programming-guide/namespaces/index.md
     - name: Basic Types
       href: csharp/basic-types.md
     - name: Classes
       href: csharp/programming-guide/classes-and-structs/classes.md
-    - name: Nullable reference types
-      href: csharp/nullable-references.md
     - name: Structs
       href: csharp/structs.md
     - name: Tuples
@@ -608,7 +661,6 @@
     - name: Iterators
       href: csharp/iterators.md
     - name: Delegates & events
-      href: csharp/delegates-events.md
       items:
       - name: Introduction to Delegates
         href: csharp/delegates-overview.md
@@ -635,8 +687,9 @@
     - name: Write safe, efficient code
       href: csharp/write-safe-efficient-code.md
     - name: Expression Trees
-      href: csharp/expression-trees.md
       items:
+      - name: Introduction to expression trees
+        href: csharp/expression-trees.md
       - name: Expression Trees Explained
         href: csharp/expression-trees-explained.md
       - name: Framework Types Supporting Expression Trees
@@ -658,8 +711,9 @@
     - name: Versioning
       href: csharp/versioning.md
   - name: How To C# Topics
-    href: csharp/how-to/index.md
     items:
+    - name: Topic index
+      href: csharp/how-to/index.md
     - name: Parse strings using `String.Split`
       href: csharp/how-to/parse-strings-using-split.md
     - name: Concatenate strings
@@ -803,6 +857,10 @@
         href: fsharp/language-reference/generics/statically-resolved-type-parameters.md
     - name: Records
       href: fsharp/language-reference/records.md
+    - name: Anonymous Records
+      href: fsharp/language-reference/anonymous-records.md
+    - name: Copy and Update Record Expressions
+      href: fsharp/language-reference/copy-and-update-record-expressions.md
     - name: Discriminated Unions
       href: fsharp/language-reference/discriminated-unions.md
     - name: Enumerations
@@ -850,8 +908,6 @@
       href: fsharp/language-reference/delegates.md
     - name: Object Expressions
       href: fsharp/language-reference/object-expressions.md
-    - name: Copy and Update Record Expressions
-      href: fsharp/language-reference/copy-and-update-record-expressions.md
     - name: Casting and Conversions
       href: fsharp/language-reference/casting-and-conversions.md
     - name: Access Control
@@ -2375,5 +2431,9 @@
     href: visual-basic/walkthroughs.md
 - name: ML.NET Guide
   href: machine-learning/index.yml
+- name: .NET for Apache Spark Guide
+  href: spark/index.yml
+- name: .NET Application Architecture Guide
+  href: architecture/index.yml
 - name: Samples and Tutorials
   href: samples-and-tutorials/index.md

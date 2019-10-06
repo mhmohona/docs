@@ -28,7 +28,7 @@ It is very common in Windows Forms programming to offer print preview in additio
 3. As you would for printing the document, in the <xref:System.Drawing.Printing.PrintDocument.PrintPage> event handler, use the <xref:System.Drawing.Printing.PrintPageEventArgs.Graphics%2A> property of the <xref:System.Drawing.Printing.PrintPageEventArgs> class and the file contents to calculate lines per page and render the document's contents. After each page is drawn, check to see if it is the last page, and set the <xref:System.Drawing.Printing.PrintPageEventArgs.HasMorePages%2A> property of the <xref:System.Drawing.Printing.PrintPageEventArgs> accordingly. The <xref:System.Drawing.Printing.PrintDocument.PrintPage> event is raised until <xref:System.Drawing.Printing.PrintPageEventArgs.HasMorePages%2A> is `false`. When the document has finished rendering, reset the string to be rendered. Also, make sure the <xref:System.Drawing.Printing.PrintDocument.PrintPage> event is associated with its event-handling method.  
   
     > [!NOTE]
-    >  You may have already completed steps 2 and 3 if you have implemented printing in your application.  
+    > You may have already completed steps 2 and 3 if you have implemented printing in your application.  
   
      In the following code example, the event handler is used to print the "testPage.txt" file in the same font used on the form.  
   
@@ -54,9 +54,7 @@ It is very common in Windows Forms programming to offer print preview in additio
 ## Compiling the Code  
  This example requires:  
   
--   References to the System, System.Windows.Forms, System.Drawing assemblies.  
-  
--   For information about building this example from the command line for Visual Basic or Visual C#, see [Building from the Command Line](../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md) or [Command-line Building With csc.exe](../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md). You can also build this example in Visual Studio by pasting the code into a new project.  
+- References to the System, System.Windows.Forms, System.Drawing assemblies.  
   
 ## See also
 

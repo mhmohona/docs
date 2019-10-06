@@ -33,7 +33,7 @@ ms.assetid: 737d04ec-8861-46c3-8d44-fa11d3528d23
 Users interact with Windows Presentation Foundation (WPF) standalone applications through windows. The primary purpose of a window is to host content that visualizes data and enables users to interact with data. Standalone [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] applications provide their own windows by using the <xref:System.Windows.Window> class. This topic introduces <xref:System.Windows.Window> before covering the fundamentals of creating and managing windows in standalone applications.  
   
 > [!NOTE]
->  Browser-hosted [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] applications, including [!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)] and loose [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] pages, don't provide their own windows. Instead, they are hosted in windows provided by [!INCLUDE[TLA#tla_iegeneric](../../../../includes/tlasharptla-iegeneric-md.md)]. See [WPF XAML Browser Applications Overview](wpf-xaml-browser-applications-overview.md).  
+> Browser-hosted [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] applications, including [!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)] and loose [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] pages, don't provide their own windows. Instead, they are hosted in windows provided by Windows Internet Explorer. See [WPF XAML Browser Applications Overview](wpf-xaml-browser-applications-overview.md).  
 
 <a name="TheWindowClass"></a>   
 ## The Window Class  
@@ -45,29 +45,29 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  The *non-client area* of a window is implemented by [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] and includes the parts of a window that are common to most windows, including the following:  
   
--   A border.  
+- A border.  
   
--   A title bar.  
+- A title bar.  
   
--   An icon.  
+- An icon.  
   
--   Minimize, Maximize, and Restore buttons.  
+- Minimize, Maximize, and Restore buttons.  
   
--   A Close button.  
+- A Close button.  
   
--   A System menu with menu items that allow users to minimize, maximize, restore, move, resize, and close a window.  
+- A System menu with menu items that allow users to minimize, maximize, restore, move, resize, and close a window.  
   
  The *client area* of a window is the area within a window's non-client area and is used by developers to add application-specific content, such as menu bars, tool bars, and controls.  
   
  In [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], a window is encapsulated by the <xref:System.Windows.Window> class that you use to do the following:  
   
--   Display a window.  
+- Display a window.  
   
--   Configure the size, position, and appearance of a window.  
+- Configure the size, position, and appearance of a window.  
   
--   Host application-specific content.  
+- Host application-specific content.  
   
--   Manage the lifetime of a window.  
+- Manage the lifetime of a window.  
   
 <a name="DefiningAWindow"></a>   
 ## Implementing a Window  
@@ -82,14 +82,14 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  To enable a [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup file and code-behind file to work together, the following are required:  
   
--   In markup, the `Window` element must include the `x:Class` attribute. When the application is built, the existence of `x:Class` in the markup file causes [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] to create a `partial` class that derives from <xref:System.Windows.Window> and has the name that is specified by the `x:Class` attribute. This requires the addition of an [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] namespace declaration for the [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] schema ( `xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"` ). The generated `partial` class implements the `InitializeComponent` method, which is called to register the events and set the properties that are implemented in markup.  
+- In markup, the `Window` element must include the `x:Class` attribute. When the application is built, the existence of `x:Class` in the markup file causes Microsoft build engine (MSBuild) to create a `partial` class that derives from <xref:System.Windows.Window> and has the name that is specified by the `x:Class` attribute. This requires the addition of an [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] namespace declaration for the [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] schema ( `xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"` ). The generated `partial` class implements the `InitializeComponent` method, which is called to register the events and set the properties that are implemented in markup.  
   
--   In code-behind, the class must be a `partial` class with the same name that is specified by the `x:Class` attribute in markup, and it must derive from <xref:System.Windows.Window>. This allows the code-behind file to be associated with the `partial` class that is generated for the markup file when the application is built (see [Building a WPF Application](building-a-wpf-application-wpf.md)).  
+- In code-behind, the class must be a `partial` class with the same name that is specified by the `x:Class` attribute in markup, and it must derive from <xref:System.Windows.Window>. This allows the code-behind file to be associated with the `partial` class that is generated for the markup file when the application is built (see [Building a WPF Application](building-a-wpf-application-wpf.md)).  
   
--   In code-behind, the <xref:System.Windows.Window> class must implement a constructor that calls the `InitializeComponent` method. `InitializeComponent` is implemented by the markup file's generated `partial` class to register events and set properties that are defined in markup.  
+- In code-behind, the <xref:System.Windows.Window> class must implement a constructor that calls the `InitializeComponent` method. `InitializeComponent` is implemented by the markup file's generated `partial` class to register events and set properties that are defined in markup.  
   
 > [!NOTE]
->  When you add a new <xref:System.Windows.Window> to your project by using [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)], the <xref:System.Windows.Window> is implemented using both markup and code-behind, and includes the necessary configuration to create the association between the markup and code-behind files as described here.  
+> When you add a new <xref:System.Windows.Window> to your project by using [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)], the <xref:System.Windows.Window> is implemented using both markup and code-behind, and includes the necessary configuration to create the association between the markup and code-behind files as described here.  
   
  With this configuration in place, you can focus on defining the appearance of the window in [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup and implementing its behavior in code-behind. The following example shows a window with a button, implemented in [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup, and an event handler for the button's <xref:System.Windows.Controls.Primitives.ButtonBase.Click> event, implemented in code-behind.  
   
@@ -100,13 +100,13 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
 <a name="ConfiguringWindowForMSBuild"></a>   
 ## Configuring a Window Definition for MSBuild  
- How you implement your window determines how it is configured for [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]. For a window that is defined using both [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup and code-behind:  
+ How you implement your window determines how it is configured for MSBuild. For a window that is defined using both [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup and code-behind:  
   
--   [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup files are configured as [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Page` items.  
+- XAML markup files are configured as MSBuild `Page` items.  
   
--   Code-behind files are configured as [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Compile` items.  
+- Code-behind files are configured as MSBuild `Compile` items.  
   
- This is shown in the following [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] project file.  
+ This is shown in the following MSBuild project file.  
   
 ```xml  
 <Project ...  
@@ -143,7 +143,7 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
  A window that is opened by calling <xref:System.Windows.Window.Show%2A> is a modeless window, which means that the application operates in a mode that allows users to activate other windows in the same application.  
   
 > [!NOTE]
->  <xref:System.Windows.Window.ShowDialog%2A> is called to open windows such as dialog boxes modally. See [Dialog Boxes Overview](dialog-boxes-overview.md) for more information.  
+> <xref:System.Windows.Window.ShowDialog%2A> is called to open windows such as dialog boxes modally. See [Dialog Boxes Overview](dialog-boxes-overview.md) for more information.  
   
  When <xref:System.Windows.Window.Show%2A> is called, a window performs initialization work before it is shown to establish infrastructure that allows it to receive user input. When the window is initialized, the <xref:System.Windows.Window.SourceInitialized> event is raised and the window is shown.  
   
@@ -157,20 +157,20 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
 #### Window Ownership  
  A window that is opened by using the <xref:System.Windows.Window.Show%2A> method does not have an implicit relationship with the window that created it; users can interact with either window independently of the other, which means that either window can do the following:  
   
--   Cover the other (unless one of the windows has its <xref:System.Windows.Window.Topmost%2A> property set to `true`).  
+- Cover the other (unless one of the windows has its <xref:System.Windows.Window.Topmost%2A> property set to `true`).  
   
--   Be minimized, maximized, and restored without affecting the other.  
+- Be minimized, maximized, and restored without affecting the other.  
   
- Some windows require a relationship with the window that opens them. For example, an [!INCLUDE[TLA#tla_ide](../../../../includes/tlasharptla-ide-md.md)] application may open property windows and tool windows whose typical behavior is to cover the window that creates them. Furthermore, such windows should always close, minimize, maximize, and restore in concert with the window that created them. Such a relationship can be established by making one window *own* another, and is achieved by setting the <xref:System.Windows.Window.Owner%2A> property of the *owned window* with a reference to the *owner window*. This is shown in the following example.  
+ Some windows require a relationship with the window that opens them. For example, an Integrated Development Environment (IDE) application may open property windows and tool windows whose typical behavior is to cover the window that creates them. Furthermore, such windows should always close, minimize, maximize, and restore in concert with the window that created them. Such a relationship can be established by making one window *own* another, and is achieved by setting the <xref:System.Windows.Window.Owner%2A> property of the *owned window* with a reference to the *owner window*. This is shown in the following example.  
   
  [!code-csharp[WindowOwnerOwnedWindowsSnippets#SetWindowOwnerCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowOwnerOwnedWindowsSnippets/CSharp/MainWindow.xaml.cs#setwindowownercode)]
  [!code-vb[WindowOwnerOwnedWindowsSnippets#SetWindowOwnerCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WindowOwnerOwnedWindowsSnippets/visualbasic/mainwindow.xaml.vb#setwindowownercode)]  
   
  After ownership is established:  
   
--   The owned window can reference its owner window by inspecting the value of its <xref:System.Windows.Window.Owner%2A> property.  
+- The owned window can reference its owner window by inspecting the value of its <xref:System.Windows.Window.Owner%2A> property.  
   
--   The owner window can discover all the windows it owns by inspecting the value of its <xref:System.Windows.Window.OwnedWindows%2A> property.  
+- The owner window can discover all the windows it owns by inspecting the value of its <xref:System.Windows.Window.OwnedWindows%2A> property.  
   
 <a name="Preventing"></a>   
 #### Preventing Window Activation  
@@ -178,28 +178,28 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  If your application has a window that shouldn't be activated when shown, you can set its <xref:System.Windows.Window.ShowActivated%2A> property to `false` before calling the <xref:System.Windows.Window.Show%2A> method for the first time. As a consequence:  
   
--   The window is not activated.  
+- The window is not activated.  
   
--   The window's <xref:System.Windows.Window.Activated> event is not raised.  
+- The window's <xref:System.Windows.Window.Activated> event is not raised.  
   
--   The currently activated window remains activated.  
+- The currently activated window remains activated.  
   
  The window will become activated, however, as soon as the user activates it by clicking either the client or non-client area. In this case:  
   
--   The window is activated.  
+- The window is activated.  
   
--   The window's <xref:System.Windows.Window.Activated> event is raised.  
+- The window's <xref:System.Windows.Window.Activated> event is raised.  
   
--   The previously activated window is deactivated.  
+- The previously activated window is deactivated.  
   
--   The window's <xref:System.Windows.Window.Deactivated> and <xref:System.Windows.Window.Activated> events are subsequently raised as expected in response to user actions.  
+- The window's <xref:System.Windows.Window.Deactivated> and <xref:System.Windows.Window.Activated> events are subsequently raised as expected in response to user actions.  
   
 <a name="Window_Activation"></a>   
 ### Window Activation  
  When a window is first opened, it becomes the active window (unless it is shown with <xref:System.Windows.Window.ShowActivated%2A> set to `false`). The *active window* is the window that is currently capturing user input, such as key strokes and mouse clicks. When a window becomes active, it raises the <xref:System.Windows.Window.Activated> event.  
   
 > [!NOTE]
->  When a window is first opened, the <xref:System.Windows.FrameworkElement.Loaded> and <xref:System.Windows.Window.ContentRendered> events are raised only after the <xref:System.Windows.Window.Activated> event is raised. With this in mind, a window can effectively be considered opened when <xref:System.Windows.Window.ContentRendered> is raised.  
+> When a window is first opened, the <xref:System.Windows.FrameworkElement.Loaded> and <xref:System.Windows.Window.ContentRendered> events are raised only after the <xref:System.Windows.Window.Activated> event is raised. With this in mind, a window can effectively be considered opened when <xref:System.Windows.Window.ContentRendered> is raised.  
   
  After a window becomes active, a user can activate another window in the same application, or activate another application. When that happens, the currently active window becomes deactivated and raises the <xref:System.Windows.Window.Deactivated> event. Likewise, when the user selects a currently deactivated window, the window becomes active again and <xref:System.Windows.Window.Activated> is raised.  
   
@@ -215,27 +215,27 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
  If a background task completes, a window may want to notify the user more urgently by calling <xref:System.Windows.Window.Activate%2A> method. If the user is interacting with another application activated when <xref:System.Windows.Window.Activate%2A> is called, the window's taskbar button flashes. If a user is interacting with the current application, calling <xref:System.Windows.Window.Activate%2A> will bring the window to the foreground.  
   
 > [!NOTE]
->  You can handle application-scope activation using the <xref:System.Windows.Application.Activated?displayProperty=nameWithType> and <xref:System.Windows.Application.Deactivated?displayProperty=nameWithType> events.  
+> You can handle application-scope activation using the <xref:System.Windows.Application.Activated?displayProperty=nameWithType> and <xref:System.Windows.Application.Deactivated?displayProperty=nameWithType> events.  
   
 <a name="Closing_a_Window"></a>   
 ### Closing a Window  
  The life of a window starts coming to an end when a user closes it. A window can be closed by using elements in the non-client area, including the following:  
   
--   The **Close** item of the **System** menu.  
+- The **Close** item of the **System** menu.  
   
--   Pressing ALT+F4.  
+- Pressing ALT+F4.  
   
--   Pressing the **Close** button.  
+- Pressing the **Close** button.  
   
  You can provide additional mechanisms to the client area to close a window, the more common of which include the following:  
   
--   An **Exit** item in the **File** menu, typically for main application windows.  
+- An **Exit** item in the **File** menu, typically for main application windows.  
   
--   A **Close** item in the **File** menu, typically on a secondary application window.  
+- A **Close** item in the **File** menu, typically on a secondary application window.  
   
--   A **Cancel** button, typically on a modal dialog box.  
+- A **Cancel** button, typically on a modal dialog box.  
   
--   A **Close** button, typically on a modeless dialog box.  
+- A **Close** button, typically on a modeless dialog box.  
   
  To close a window in response to one of these custom mechanisms, you need to call the <xref:System.Windows.Window.Close%2A> method. The following example implements the ability to close a window by choosing the **Exit** on the **File** menu.  
   
@@ -256,20 +256,20 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
  If <xref:System.Windows.Window.Closing> is not handled, or it is handled but not canceled, the window will close. Just before a window actually closes, <xref:System.Windows.Window.Closed> is raised. At this point, a window cannot be prevented from closing.  
   
 > [!NOTE]
->  An application can be configured to shut down automatically when either the main application window closes (see <xref:System.Windows.Application.MainWindow%2A>) or the last window closes. For details, see <xref:System.Windows.Application.ShutdownMode%2A>.  
+> An application can be configured to shut down automatically when either the main application window closes (see <xref:System.Windows.Application.MainWindow%2A>) or the last window closes. For details, see <xref:System.Windows.Application.ShutdownMode%2A>.  
   
- While a window can be explicitly closed through mechanisms provided in the non-client and client areas, a window can also be implicitly closed as a result of behavior in other parts of the application or [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)], including the following:  
+ While a window can be explicitly closed through mechanisms provided in the non-client and client areas, a window can also be implicitly closed as a result of behavior in other parts of the application or Windows, including the following:  
   
--   A user logs off or shuts down Windows.  
+- A user logs off or shuts down Windows.  
   
--   A window's owner closes (see <xref:System.Windows.Window.Owner%2A>).  
+- A window's owner closes (see <xref:System.Windows.Window.Owner%2A>).  
   
--   The main application window is closed and <xref:System.Windows.Application.ShutdownMode%2A> is <xref:System.Windows.ShutdownMode.OnMainWindowClose>.  
+- The main application window is closed and <xref:System.Windows.Application.ShutdownMode%2A> is <xref:System.Windows.ShutdownMode.OnMainWindowClose>.  
   
--   <xref:System.Windows.Application.Shutdown%2A> is called.  
+- <xref:System.Windows.Application.Shutdown%2A> is called.  
   
 > [!NOTE]
->  A window cannot be reopened after it is closed.  
+> A window cannot be reopened after it is closed.  
   
 <a name="Window_Lifetime_Events"></a>   
 ### Window Lifetime Events  
@@ -287,11 +287,11 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  You can also specify the initial location of a <xref:System.Windows.Window> when it first appears by setting the <xref:System.Windows.Window.WindowStartupLocation%2A> property with one of the following <xref:System.Windows.WindowStartupLocation> enumeration values:  
   
--   <xref:System.Windows.WindowStartupLocation.CenterOwner> (default)  
+- <xref:System.Windows.WindowStartupLocation.CenterOwner> (default)  
   
--   <xref:System.Windows.WindowStartupLocation.CenterScreen>  
+- <xref:System.Windows.WindowStartupLocation.CenterScreen>  
   
--   <xref:System.Windows.WindowStartupLocation.Manual>  
+- <xref:System.Windows.WindowStartupLocation.Manual>  
   
  If the startup location is specified as <xref:System.Windows.WindowStartupLocation.Manual>, and the <xref:System.Windows.Window.Left%2A> and <xref:System.Windows.Window.Top%2A> properties have not been set, <xref:System.Windows.Window> will ask Windows for a location to appear in.  
   
@@ -319,13 +319,13 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  If you'd like the width and height of your window to have a size that fits to the size of the window's content, you can use the <xref:System.Windows.Window.SizeToContent%2A> property, which has the following values:  
   
--   <xref:System.Windows.SizeToContent.Manual>. No effect (default).  
+- <xref:System.Windows.SizeToContent.Manual>. No effect (default).  
   
--   <xref:System.Windows.SizeToContent.Width>. Fit to content width, which has the same effect as setting both <xref:System.Windows.FrameworkElement.MinWidth%2A> and <xref:System.Windows.FrameworkElement.MaxWidth%2A> to the width of the content.  
+- <xref:System.Windows.SizeToContent.Width>. Fit to content width, which has the same effect as setting both <xref:System.Windows.FrameworkElement.MinWidth%2A> and <xref:System.Windows.FrameworkElement.MaxWidth%2A> to the width of the content.  
   
--   <xref:System.Windows.SizeToContent.Height>. Fit to content height, which has the same effect as setting both <xref:System.Windows.FrameworkElement.MinHeight%2A> and <xref:System.Windows.FrameworkElement.MaxHeight%2A> to the height of the content.  
+- <xref:System.Windows.SizeToContent.Height>. Fit to content height, which has the same effect as setting both <xref:System.Windows.FrameworkElement.MinHeight%2A> and <xref:System.Windows.FrameworkElement.MaxHeight%2A> to the height of the content.  
   
--   <xref:System.Windows.SizeToContent.WidthAndHeight>. Fit to content width and height, which has the same effect as setting both <xref:System.Windows.FrameworkElement.MinHeight%2A> and <xref:System.Windows.FrameworkElement.MaxHeight%2A> to the height of the content, and setting both <xref:System.Windows.FrameworkElement.MinWidth%2A> and <xref:System.Windows.FrameworkElement.MaxWidth%2A> to the width of the content.  
+- <xref:System.Windows.SizeToContent.WidthAndHeight>. Fit to content width and height, which has the same effect as setting both <xref:System.Windows.FrameworkElement.MinHeight%2A> and <xref:System.Windows.FrameworkElement.MaxHeight%2A> to the height of the content, and setting both <xref:System.Windows.FrameworkElement.MinWidth%2A> and <xref:System.Windows.FrameworkElement.MaxWidth%2A> to the width of the content.  
   
  The following example shows a window that automatically sizes to fit its content, both vertically and horizontally, when first shown.  
   
@@ -371,15 +371,15 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
  A window with a *maximized* state expands to the maximum size it can be, which will only be as large as its <xref:System.Windows.FrameworkElement.MaxWidth%2A>, <xref:System.Windows.FrameworkElement.MaxHeight%2A>, and <xref:System.Windows.Window.SizeToContent%2A> properties dictate. Like a minimized window, a maximized window cannot be resized by using a resize grip or by dragging the border.  
   
 > [!NOTE]
->  The values of the <xref:System.Windows.Window.Top%2A>, <xref:System.Windows.Window.Left%2A>, <xref:System.Windows.FrameworkElement.Width%2A>, and <xref:System.Windows.FrameworkElement.Height%2A> properties of a window always represent the values for the normal state, even when the window is currently maximized or minimized.  
+> The values of the <xref:System.Windows.Window.Top%2A>, <xref:System.Windows.Window.Left%2A>, <xref:System.Windows.FrameworkElement.Width%2A>, and <xref:System.Windows.FrameworkElement.Height%2A> properties of a window always represent the values for the normal state, even when the window is currently maximized or minimized.  
   
  The state of a window can be configured by setting its <xref:System.Windows.Window.WindowState%2A> property, which can have one of the following <xref:System.Windows.WindowState> enumeration values:  
   
--   <xref:System.Windows.WindowState.Normal> (default)  
+- <xref:System.Windows.WindowState.Normal> (default)  
   
--   <xref:System.Windows.WindowState.Maximized>  
+- <xref:System.Windows.WindowState.Maximized>  
   
--   <xref:System.Windows.WindowState.Minimized>  
+- <xref:System.Windows.WindowState.Minimized>  
   
  The following example shows how to create a window that is shown as maximized when it opens.  
   
@@ -399,13 +399,13 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  You can configure how a window resizes by setting its <xref:System.Windows.Window.ResizeMode%2A> property, which can be one of the following <xref:System.Windows.ResizeMode> enumeration values:  
   
--   <xref:System.Windows.ResizeMode.NoResize>  
+- <xref:System.Windows.ResizeMode.NoResize>  
   
--   <xref:System.Windows.ResizeMode.CanMinimize>  
+- <xref:System.Windows.ResizeMode.CanMinimize>  
   
--   <xref:System.Windows.ResizeMode.CanResize> (default)  
+- <xref:System.Windows.ResizeMode.CanResize> (default)  
   
--   <xref:System.Windows.ResizeMode.CanResizeWithGrip>  
+- <xref:System.Windows.ResizeMode.CanResizeWithGrip>  
   
  As with <xref:System.Windows.Window.WindowStyle%2A>, the resize mode of a window is unlikely to change during its lifetime, which means that you'll most likely set it from [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] markup.  
   
@@ -419,13 +419,13 @@ Users interact with Windows Presentation Foundation (WPF) standalone application
   
  To control what type of border a window gets, you set its <xref:System.Windows.Window.WindowStyle%2A> property with one of the following values of the <xref:System.Windows.WindowStyle> enumeration:  
   
--   <xref:System.Windows.WindowStyle.None>  
+- <xref:System.Windows.WindowStyle.None>  
   
--   <xref:System.Windows.WindowStyle.SingleBorderWindow> (default)  
+- <xref:System.Windows.WindowStyle.SingleBorderWindow> (default)  
   
--   <xref:System.Windows.WindowStyle.ThreeDBorderWindow>  
+- <xref:System.Windows.WindowStyle.ThreeDBorderWindow>  
   
--   <xref:System.Windows.WindowStyle.ToolWindow>  
+- <xref:System.Windows.WindowStyle.ToolWindow>  
   
  The effect of these window styles are illustrated in the following figure:  
   
@@ -463,7 +463,7 @@ The default appearance of a window includes a taskbar button, like the one shown
 ## Security Considerations  
  <xref:System.Windows.Window> requires `UnmanagedCode` security permission to be instantiated. For applications installed on and launched from the local machine, this falls within the set of permissions that are granted to the application.  
   
- However, this falls outside the set of permissions granted to applications that are launched from the Internet or Local intranet zone using [!INCLUDE[TLA#tla_clickonce](../../../../includes/tlasharptla-clickonce-md.md)]. Consequently, users will receive a [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)] security warning and will need to elevate the permission set for the application to full trust.  
+ However, this falls outside the set of permissions granted to applications that are launched from the Internet or Local intranet zone using ClickOnce. Consequently, users will receive a ClickOnce security warning and will need to elevate the permission set for the application to full trust.  
   
  Additionally, [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)] cannot show windows or dialog boxes by default. For a discussion on standalone application security considerations, see [WPF Security Strategy - Platform Security](../wpf-security-strategy-platform-security.md).  
   

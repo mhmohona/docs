@@ -139,9 +139,9 @@ A caller can then invoke the method in either of three ways:
 - By passing a comma-separated list of individual arguments of the appropriate type to the method.
 - By not providing an argument to the parameter array.
 
-The following example defines a method named `DoStringOperation` that performs the string operation specified by its first parameter, a `StringOperation` enumeration member. The strings upon which it is to perform the operation are defined by a parameter array. The `Main` method illustrates all three ways of invoking the method. Note that the method tagged with the `params` keyword must be prepared to handle the case in which no argument is supplied for the parameter array, so that its value is `null`.
+The following example defines a method named `GetVowels` that returns all the vowels from a parameter array. The `Main` method illustrates all three ways of invoking the method. Callers are not required to supply any arguments for parameters that include the `params` modifier. In that case, the parameter is `null`.
 
-[!code-csharp[csSnippets.Methods#106](../../samples/snippets/csharp/concepts/methods/byref108.cs#108)]
+[!code-csharp[csSnippets.Methods#75](~/samples/snippets/csharp/concepts/methods/params75.cs#75)]
 
 <a name="optional"></a>
 
@@ -152,7 +152,7 @@ A method definition can specify that its parameters are required or that they ar
 The parameter's default value must be assigned by one of the following kinds of expressions:
 
 - A constant, such as a literal string or number.
-- An expression of the form `new ValType`, where `ValType` is a value type. Note that this invokes the value type's implicit default constructor, which is not an actual member of the type.
+- An expression of the form `new ValType`, where `ValType` is a value type. Note that this invokes the value type's implicit parameterless constructor, which is not an actual member of the type.
 - An expression of the form `default(ValType)`, where `ValType` is a value type.
 
 If a method includes both required and optional parameters, optional parameters are defined at the end of the parameter list, after all required parameters.
@@ -252,7 +252,7 @@ For more information, see [Extension Methods](programming-guide/classes-and-stru
 
 By using the async feature, you can invoke asynchronous methods without using explicit callbacks or manually splitting your code across multiple methods or lambda expressions.
 
-If you mark a method with the [async](language-reference/keywords/async.md) modifier, you can use the [await](language-reference/keywords/await.md) operator in the method. When control reaches an `await` expression in the async method, control returns to the caller if the awaited task is not completed, and progress in the method with the `await` keyword is suspended until the awaited task completes. When the task is complete, execution can resume in the method.
+If you mark a method with the [async](language-reference/keywords/async.md) modifier, you can use the [await](language-reference/operators/await.md) operator in the method. When control reaches an `await` expression in the async method, control returns to the caller if the awaited task is not completed, and progress in the method with the `await` keyword is suspended until the awaited task completes. When the task is complete, execution can resume in the method.
 
 > [!NOTE]
 > An async method returns to the caller when either it encounters the first awaited object that’s not yet complete or it gets to the end of the async method, whichever occurs first.

@@ -34,7 +34,7 @@ WCF services and clients can use the <xref:System.ServiceModel.NetHttpBinding> b
   
 3. Implement the service contract.  
   
-    ```  
+    ```csharp
     public class StockQuoteService : IStockQuoteService  
         {  
             public async Task StartSendingQuotes()  
@@ -102,7 +102,7 @@ WCF services and clients can use the <xref:System.ServiceModel.NetHttpBinding> b
   
      The callback contract operation is implemented as an asynchronous method.  
   
-    1.  Implement the client code.  
+    1. Implement the client code.  
   
         ```csharp  
         class Program  
@@ -127,7 +127,7 @@ WCF services and clients can use the <xref:System.ServiceModel.NetHttpBinding> b
   
          The CallbackHandler is repeated here for clarity. The client application creates a new InstanceContext and specifies the implementation of the callback interface. Next it creates an instance of the proxy class sending a reference to the newly created InstanceContext. When the client calls the service, the service will call the client using the callback contract specified.  
   
-    2.  Configure the client  
+    2. Configure the client  
   
         ```xml  
         <?xml version="1.0" encoding="utf-8" ?>  
@@ -185,7 +185,7 @@ namespace Server
 }  
 ```  
   
-```  
+```csharp
 // StockQuoteService.svc.cs  
 using System;  
 using System.Collections.Generic;  
@@ -251,7 +251,7 @@ namespace Server
 </configuration>  
 ```  
   
-```  
+```
 <!-- StockQuoteService.svc -->  
 <%@ ServiceHost Language="C#" Debug="true" Service="Server.StockQuoteService" CodeBehind="StockQuoteService.svc.cs" %>  
 ```  

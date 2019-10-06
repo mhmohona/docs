@@ -7,18 +7,18 @@ ms.assetid: f1d0b562-e349-4dce-ab5f-c05108467030
 Although you can set an object's properties to default values at design time, any values entered at run time are lost when the object is destroyed. You can use serialization to persist an object's data between instances, which enables you to store values and retrieve them the next time that the object is instantiated.  
   
 > [!NOTE]
->  In Visual Basic, to store simple data, such as a name or number, you can use the `My.Settings` object. For more information, see [My.Settings Object](../../../../visual-basic/language-reference/objects/my-settings-object.md).  
+> In Visual Basic, to store simple data, such as a name or number, you can use the `My.Settings` object. For more information, see [My.Settings Object](../../../../visual-basic/language-reference/objects/my-settings-object.md).  
   
  In this walkthrough, you will create a simple `Loan` object and persist its data to a file. You will then retrieve the data from the file when you re-create the object.  
   
 > [!IMPORTANT]
->  This example creates a new file, if the file does not already exist. If an application must create a file, that application must `Create` permission for the folder. Permissions are set by using access control lists. If the file already exists, the application needs only `Write` permission, a lesser permission. Where possible, it is more secure to create the file during deployment, and only grant `Read` permissions to a single file (instead of Create permissions for a folder). Also, it is more secure to write data to user folders than to the root folder or the Program Files folder.  
+> This example creates a new file, if the file does not already exist. If an application must create a file, that application must `Create` permission for the folder. Permissions are set by using access control lists. If the file already exists, the application needs only `Write` permission, a lesser permission. Where possible, it is more secure to create the file during deployment, and only grant `Read` permissions to a single file (instead of Create permissions for a folder). Also, it is more secure to write data to user folders than to the root folder or the Program Files folder.  
   
 > [!IMPORTANT]
->  This example stores data in a binary. These formats should not be used for sensitive data, such as passwords or credit-card information.  
+> This example stores data in a binary. These formats should not be used for sensitive data, such as passwords or credit-card information.  
   
 > [!NOTE]
->  The dialog boxes and menu commands you see might differ from those described in Help depending on your active settings or edition. To change your settings, click **Import and Export Settings** on the **Tools** menu. For more information, see [Personalize the Visual Studio IDE](/visualstudio/ide/personalizing-the-visual-studio-ide).  
+> The dialog boxes and menu commands you see might differ from those described in Help depending on your active settings or edition. To change your settings, click **Import and Export Settings** on the **Tools** menu. For more information, see [Personalize the Visual Studio IDE](/visualstudio/ide/personalizing-the-visual-studio-ide).  
   
 ## Creating the Loan Object  
  The first step is to create a `Loan` class and a test application that uses the class.  
@@ -121,7 +121,7 @@ Although you can set an object's properties to default values at design time, an
   
 ### To mark a class as serializable  
   
--   Change the class declaration for the Loan class as follows:  
+- Change the class declaration for the Loan class as follows:  
   
     ```vb  
     <Serializable()>  
@@ -132,7 +132,7 @@ Although you can set an object's properties to default values at design time, an
   
 ### To prevent a member from being serialized  
   
--   Change the declaration for the `PropertyChanged` event as follows:  
+- Change the declaration for the `PropertyChanged` event as follows:  
   
     ```vb  
     <NonSerialized()>  
@@ -144,7 +144,7 @@ Although you can set an object's properties to default values at design time, an
   
 ### To add references to namespaces  
   
--   Add the following statements to the top of the `Form1` class:  
+- Add the following statements to the top of the `Form1` class:  
   
     ```vb  
     Imports System.IO  
@@ -191,7 +191,7 @@ Although you can set an object's properties to default values at design time, an
   
 ### To save the data and serialize the class  
   
--   Add the following code to the `Form1_FormClosing` event procedure:  
+- Add the following code to the `Form1_FormClosing` event procedure:  
   
     ```vb  
     Private Sub Form1_FormClosing() Handles MyBase.FormClosing  
