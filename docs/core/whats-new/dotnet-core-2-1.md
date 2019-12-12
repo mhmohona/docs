@@ -4,8 +4,6 @@ description: Learn about the new features found in .NET Core 2.1.
 dev_langs: 
   - "csharp"
   - "vb"
-author: rpetrusha
-ms.author: ronpet
 ms.date: 10/10/2018
 ---
 # What's new in .NET Core 2.1
@@ -207,7 +205,7 @@ The <xref:System.IO.Compression.BrotliStream> behavior is the same as <xref:Syst
 
 - The static <xref:System.Security.Cryptography.RandomNumberGenerator.Fill%2A?displayProperty=nameWithType> method fills a <xref:System.Span%601> with random values.
 
-- The <xref:System.Security.Cryptography.Pkcs.EnvelopedCms?displayProperty=nameWithType> is now supported on Linux and maxOS.
+- The <xref:System.Security.Cryptography.Pkcs.EnvelopedCms?displayProperty=nameWithType> is now supported on Linux and macOS.
 
 - Elliptic-Curve Diffie-Hellman (ECDH) is now available in the <xref:System.Security.Cryptography.ECDiffieHellman?displayProperty=nameWithType> class family. The surface area is the same as in the .NET Framework.
 
